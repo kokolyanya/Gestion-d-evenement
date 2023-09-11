@@ -1,87 +1,117 @@
 <template>
-  <div class="Form">
+  <form class="Form" @submit.prevent="submitForm">
       <h2 class="titreNouvel">Nouvel évènement</h2>
       <div class="acompleter">
         <div class="nom">
           <label for="nomOrganisateur">Nom de l'organisateur :</label>
-          <input id="nomOrganisateur" type="text" class="inputText inputNom" />
+          <input id="nomOrganisateur" type="text" class="inputText inputNom" v-model.trim="nomOrganisateur"/>
         </div>
         <div class="nom">
           <label for="nomEvenement">Nom de l'évènement :</label>
-          <input id="nomEvenement" type="text" class="inputText inputNom" />
+          <input id="nomEvenement" type="text" class="inputText inputNom" v-model.trim="nomEvenement"/>
         </div>
         <div class="theme">
           <label for="themeEvenement">Thème de l'évènement :</label>
-          <input id="themeEvenement" type="text" class="inputText inputTheme" />
+          <input id="themeEvenement" type="text" class="inputText inputTheme" v-model.trim="themeEvenement"/>
         </div>
         <div class="temps">
           <div>
             <label for="date">Date :</label>
-            <select >
-              <option v-for="index in 31" :key="index" ><span v-if="index<10">0</span>{{index}}</option>
+            <select v-model.number="jour">
+              <option v-for="index in 30" :key="index" :value="index"><span v-if="index<10">0</span>{{index}}</option>
             </select>
-            <select >
-              <option v-for="index in 12" :key="index" ><span v-if="index<10">0</span>{{index}}</option>
+            <select v-model.number="mois">
+              <option v-for="index in 12" :key="index" :value="index" ><span v-if="index<10">0</span>{{index}}</option>
             </select>
-            <select >
-              <option v-for="index in 10" :key="index" >{{index+offset}}</option>
+            <select v-model.number="annee">
+              <option v-for="index in 10" :key="index" :value="index+offset" >{{index+offset}}</option>
             </select>
           </div>
           <div class="horaire">
             <label for="horaire">Horaire :</label>
-            <select >
-              <option v-for="index in 23" :key="index" ><span v-if="index<10">0</span>{{index}}</option>
+            <select v-model.number="heureDebut">
+              <option v-for="index in 23" :key="index" :value="index"><span v-if="index<10">0</span>{{index}}</option>
             </select>
             <span> : </span>
-            <select >
-              <option v-for="index in 60" :key="index" ><span v-if="index<11">0</span>{{index-1}}</option>
+            <select v-model.number="minuteDebut">
+              <option v-for="index in 60" :key="index" :value="index-1"><span v-if="index<11">0</span>{{index-1}}</option>
             </select>
             <span> à </span>
-            <select >
-              <option v-for="index in 23" :key="index" ><span v-if="index<10">0</span>{{index}}</option>
+            <select v-model.number="heureFin">
+              <option v-for="index in 23" :key="index" :value="index"><span v-if="index<10">0</span>{{index}}</option>
             </select>
             <span> : </span>
-            <select >
-              <option v-for="index in 60" :key="index" ><span v-if="index<11">0</span>{{index-1}}</option>
+            <select v-model.number="minuteFin">
+              <option v-for="index in 60" :key="index" :value="index-1"><span v-if="index<11">0</span>{{index-1}}</option>
             </select>
           </div>
         </div>
         <div class="lieu">
           <label for="lieu">Lieu :</label>
-          <input id="lieu" type="text" class="inputText inputLieu" />
+          <input id="lieu" type="text" class="inputText inputLieu" v-model.trim="lieu" />
           <button class="chercherLieu">Chercher un lieu</button>
         </div>
         <div>
           <label for="nombrePlace">Places limitées :</label>
-          <input id="nombrePlace" type="number" class="place"/>
+          <input id="nombrePlace" type="number" class="place" v-model.number="nombrePlace" />
         </div>
         <div>
           <label for="participation">Participation :</label>
-          <input id="participation" type="text" class="inputText" />
+          <input id="participation" type="text" class="inputText" v-model.trim="participation" />
         </div>
         <div>
           <label for="image">Images :</label>
-          <input id="image" type="file" class="inputImage"/>
+          <input id="image" type="file" class="inputImage" v-on:change="handleFileChange" />
         </div>
         <div class="descri">
           <label for="description">Description :</label>
-          <textarea id="description" rows="5" cols="50"></textarea>
+          <textarea id="description" rows="5" cols="50" v-model.trim="description" ></textarea>
         </div>
       </div>
       <div class="validation">
         <button class="btn annuler">Annuler</button>
-        <button class="btn valider">Valider</button>
+        <input type="submit" class="btn valider" value="Valider" />
       </div>
-  </div>
+  </form>
 </template>
 
 <script>
 export default {
-  name: 'Entete',
+  name: 'Form',
    data() {
     return {
       offset: 2022,
+      nomOrganisateur: '',
+      nomEvenement: '',
+      themeEvenement: '',
+      jour:0,
+      mois:0,
+      annee:0,
+      heureDebut:0,
+      minuteDebut:0,
+      heureFin:0,
+      minuteFin:0,
+      lieu:'',
+      nombrePlace: 0,
+      participation:'',
+      fileName: null,
+      description:''
     };
+  },
+  methods: {
+    handleFileChange(event) {
+      const file = event.target.files[0];
+      this.fileName = file.name;
+    },
+    submitForm() {
+      let date=this.jour+'/'+this.mois+'/'+this.annee;
+      let heure1=this.heureDebut+':'+this.minuteDebut;
+      let heure2=this.heureFin+':'+this.minuteFin;
+      alert('date='+date+'\nheure='+heure1+' à '+heure2);
+      alert(this.fileName)
+    },
+    
+    
   }
 }
 </script>
