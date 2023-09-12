@@ -1,10 +1,14 @@
 <template>
   <div class="home">
-    Home page
-    <p>a,{{evenement[0].fileName}}</p>
     <div class="evenements">
-      <div>
-        <img :src="require('@/assets/' +imagePath)" alt="imagePath"/>
+      <div v-for="e in evenement" :key="e" >
+        <img :src="require('@/assets/' +e.fileName)" :alt="e.description" :title="e.nomEvenement"/>
+      </div>
+      <div v-for="e in evenement" :key="e" >
+        <img :src="require('@/assets/' +e.fileName)" :alt="e.description" :title="e.nomEvenement"/>
+      </div>
+      <div v-for="e in evenement" :key="e" >
+        <img :src="require('@/assets/' +e.fileName)" :alt="e.description" :title="e.nomEvenement"/>
       </div>
     </div>
   </div>
@@ -24,7 +28,6 @@ export default {
   data() {
     return {
       evenement : data,
-      imagePath : data[0].fileName
     }
   }
 }
@@ -33,11 +36,23 @@ export default {
 <style scoped>
 .home{
   background-color: white;
-  height: 78vh;
+  height: 77vh;
   border-radius: 0 0 50px 50px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
-.home::-webkit-scrollbar { width: 0 !important }  
+.home::-webkit-scrollbar { width: 0 !important } 
+
+.evenements{
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 50px;
+  grid-auto-rows: minmax(100px, auto);
+}
+img{
+  width: 400px;
+  height : 400px;
+}
 
 </style>

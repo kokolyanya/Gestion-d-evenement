@@ -60,7 +60,7 @@
           <input id="participation" type="text" class="inputText" v-model.trim="participation" />
         </div>
         <div>
-          <label for="image">Images :</label>
+          <label for="image">Image de l'affiche :</label>
           <input id="image" type="file" class="inputImage" v-on:change="handleFileChange" />
         </div>
         <div class="descri">
