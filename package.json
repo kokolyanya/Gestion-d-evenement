@@ -10,6 +10,7 @@
     "core-js": "^3.8.3",
     "fs": "^0.0.1-security",
     "fs-extra": "^11.1.1",
+    "material-icons": "^1.13.11",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"

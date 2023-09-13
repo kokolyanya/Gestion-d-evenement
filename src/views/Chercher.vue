@@ -1,19 +1,17 @@
 <template>
   <div class="chercher">
     <div class="recherche">
+      <span class="material-icons">search</span> 
       <input type="text" class="inputChercher" v-on:change="handleChange"/>
-      <select >
+      <select v-model="selected">
         <option value="">Chercher un évènement</option>
-        <option value="nom" class="apartirnom">À partir du nom de l'évènement</option>
+        <option value="nomEvenement" class="apartirnom">À partir du nom de l'évènement</option>
         <option value="lieu">À partir d'un lieu</option>
-        <option value="position">À partir de la position actuelle</option>
+        <option disabled value="position">À partir de la position actuelle</option>
       </select>
     </div>
     <span>.</span>
-
-    /*evenement.filter((e) => e.nomEvenement.includes( ));*/
-
-    <div class="eventChercher" v-for="e in evenement" >
+    <div class="eventChercher" v-for="e in eventFiltre" >
       <img :src="require('@/assets/' +e.fileName)" alt="e.nomEvenement" title="e.nomEvenement" />
       <div class="aproposEvent">
         <p>{{e.nomEvenement}}</p>
@@ -22,7 +20,7 @@
         <p>Date : {{e.jour}}/{{e.mois}}/{{e.annee}}</p>
       </div>
     </div>
-    <div class="eventChercher" v-for="e in evenement" >
+    <div class="eventChercher" v-for="e in eventFiltre" >
       <img :src="require('@/assets/' +e.fileName)" alt="e.nomEvenement" title="e.nomEvenement" />
       <div class="aproposEvent">
         <p>{{e.nomEvenement}}</p>
@@ -48,11 +46,31 @@ export default {
   data() {
     return {
       evenement : data,
+      eventFiltre : [],
+      selected : "",
     }
   },
   methods : {
     handleChange(event){
-      alert(event.target.value)
+      
+        alert(this.selected);
+        this.filtrer(event.target.value);
+      
+    },
+    filtrer(filtreur){
+      let s=this.selected;
+      alert("selectionné:"+s+"here");
+      alert(this.evenement[0].nomEvenement);
+      if(!s) this.eventFiltre = this.evenement.filter(e => {
+        for (let key in e) {
+          if (typeof e[key] === 'string' && e[key].includes(filtreur)) {
+            return true;
+          }
+        }
+        return false;
+      });
+      else this.eventFiltre = this.evenement.filter(e => e[s].includes(filtreur));
+      alert(this.eventFiltre);
     }
   }
 }

@@ -1,13 +1,13 @@
 <template>
   <div class="home">
     <div class="evenements">
-      <div v-for="e in evenement" :key="e" >
+      <div v-for="e in evenement" :key="e"  @click="detailler(e)">
         <img :src="require('@/assets/' +e.fileName)" :alt="e.description" :title="e.nomEvenement"/>
       </div>
-      <div v-for="e in evenement" :key="e" >
+      <div v-for="e in evenement" :key="e"  @click="detailler(e)">
         <img :src="require('@/assets/' +e.fileName)" :alt="e.description" :title="e.nomEvenement"/>
       </div>
-      <div v-for="e in evenement" :key="e" >
+      <div v-for="e in evenement" :key="e"  @click="detailler(e)">
         <img :src="require('@/assets/' +e.fileName)" :alt="e.description" :title="e.nomEvenement"/>
       </div>
     </div>
@@ -16,18 +16,25 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
-import Entete from '@/components/Entete.vue';
+import Details from '@/components/Details.vue';
 import data from '@/data/evenement-data.js';
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld, Entete
+    Details
   },
   data() {
     return {
       evenement : data,
+    }
+  },
+  methods : {
+    detailler(e) {
+      /*alert(e.id);
+      this.$router.push({ name: 'details', params: { id: e.id } });*/
+      const propValue = e.id;
+      this.$router.push({ path: "/details", query: { value: propValue } });
     }
   }
 }
