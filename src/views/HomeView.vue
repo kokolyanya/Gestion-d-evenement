@@ -31,8 +31,6 @@ export default {
   },
   methods : {
     detailler(e) {
-      /*alert(e.id);
-      this.$router.push({ name: 'details', params: { id: e.id } });*/
       const propValue = e.id;
       this.$router.push({ path: "/details", query: { value: propValue } });
     }

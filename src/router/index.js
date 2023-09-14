@@ -33,6 +33,28 @@ const routes = [
     props: (route) => ({
       id: route.query.value,
     }),
+  },
+  {
+    path: '/evenementCree',
+    name: 'evenementCree',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../components/EvenementCree.vue'),
+    props: (route) => ({
+      verification: route.query
+    }),
+  },
+  {
+    path: '/participer',
+    name: 'participer',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../components/Participer.vue'),
+    props: (route) => ({
+      verification: route.query
+    }),
   }
 ]
 

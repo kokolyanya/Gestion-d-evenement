@@ -1,5 +1,5 @@
 <template>
-  <div class="Details">
+  <div class="EvenementCree">
     <div class="det">
       <img :src="require('@/assets/'+e.fileName)" :alt="e.nomEvenement" :title="e.nomEvenement" />
       <div class="aproposEvent">
@@ -12,8 +12,7 @@
         <p>Lieu : {{e.lieu}}</p>
         <p>Nombre de place : {{e.nombrePlace}}</p>
         <p>Participation : {{e.participation}}</p>
-        <button class="btn participer" @click="participer">Participer</button>
-        <button class="btn modifier"  @click="modifier">Modifier</button>
+        <button class="btn modifier" @click="afficher">Modifier</button>
       </div>
     </div>
   </div>
@@ -21,37 +20,37 @@
 
 <script>
 import data from '@/data/evenement-data.js';
+import PropTypes from 'prop-types';
 
 export default {
-  name: 'Details',
+  name: 'EvenementCree',
   props: {
-    id: Number,
+    verification: {
+      type: Object,
+      required: true,
+      default: () => ({
+        nomOrganisateur: '',
+        nomEvenement: '',
+        themeEvenement: '',
+        date: '',
+        horaireDebut: '',
+        horaireFin: '',
+        lieu: '',
+        nombrePlace: 0,
+        participation: '',
+        fileName: '',
+        description: ''
+      })
+    }
   },
   data() {
     return {
-      e : data[this.id-1],
+      e : this.verification,
     }
   },
   methods: {
-    participer() {
-      alert("Participer à "+this.e.nomEvenement);
-      const propValue = {
-        nomOrganisateur: this.e.nomOrganisateur,
-        nomEvenement: this.e.nomEvenement,
-        themeEvenement: this.e.themeEvenement,
-        date: this.e.date,
-        horaireDebut: this.e.horaireDebut,
-        horaireFin: this.e.horaireFin,
-        lieu: this.e.lieu,
-        nombrePlace: this.e.nombrePlace,
-        participation: this.e.participation,
-        fileName: this.e.fileName,
-        description: this.e.description
-      }
-      this.$router.push({ path: "/participer", query: propValue });
-    },
-    modifier() {
-      alert("Modifier "+this.e.nomEvenement)
+    afficher() {
+      alert("Modifier "+this.verification.nomEvenement)
       this.$router.push({ path: "/creer" });
     }
   }
@@ -60,14 +59,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.Details{
+.EvenementCree{
   background-color: white;
   height: 77vh;
   border-radius: 0 0 50px 50px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
-.Details::-webkit-scrollbar { width: 0 !important } 
+.EvenementCree::-webkit-scrollbar { width: 0 !important } 
 .det{
   text-align: left;
   margin: 20px;
@@ -89,16 +88,10 @@ export default {
   position : absolute;
 }
 .modifier{
-  background-color: transparent;
-  color: rgba(1, 103, 255, 1);
-  border-color: rgba(1, 103, 255, 1);
-  bottom: 50px;
-}
-.participer{
   background-color: rgba(1, 103, 255, 1);
   color: white;
   border-color: rgba(1, 103, 255, 1);
-  bottom: 110px;
+  bottom: 50px;
 }
 img{
   height: 70vh;

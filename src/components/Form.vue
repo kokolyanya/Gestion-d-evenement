@@ -4,72 +4,52 @@
       <div class="acompleter">
         <div class="nom">
           <label for="nomOrganisateur">Nom de l'organisateur :</label>
-          <input id="nomOrganisateur" type="text" class="inputText inputNom" v-model.trim="nomOrganisateur"/>
+          <input id="nomOrganisateur" type="text" class="inputText inputNom" v-model.trim="nomOrganisateur" required/>
         </div>
         <div class="nom">
           <label for="nomEvenement">Nom de l'évènement :</label>
-          <input id="nomEvenement" type="text" class="inputText inputNom" v-model.trim="nomEvenement"/>
+          <input id="nomEvenement" type="text" class="inputText inputNom" v-model.trim="nomEvenement" required/>
         </div>
         <div class="theme">
           <label for="themeEvenement">Thème de l'évènement :</label>
-          <input id="themeEvenement" type="text" class="inputText inputTheme" v-model.trim="themeEvenement"/>
+          <input id="themeEvenement" type="text" class="inputText inputTheme" v-model.trim="themeEvenement" required/>
         </div>
         <div class="temps">
           <div>
             <label for="date">Date :</label>
-            <select v-model.number="jour">
-              <option v-for="index in 30" :key="index" :value="index"><span v-if="index<10">0</span>{{index}}</option>
-            </select>
-            <select v-model.number="mois">
-              <option v-for="index in 12" :key="index" :value="index" ><span v-if="index<10">0</span>{{index}}</option>
-            </select>
-            <select v-model.number="annee">
-              <option v-for="index in 10" :key="index" :value="index+offset" >{{index+offset}}</option>
-            </select>
+            <input type="date" v-model="date"  required/>
           </div>
           <div class="horaire">
             <label for="horaire">Horaire :</label>
-            <select v-model.number="heureDebut">
-              <option v-for="index in 23" :key="index" :value="index"><span v-if="index<10">0</span>{{index}}</option>
-            </select>
-            <span> : </span>
-            <select v-model.number="minuteDebut">
-              <option v-for="index in 60" :key="index" :value="index-1"><span v-if="index<11">0</span>{{index-1}}</option>
-            </select>
+            <input type="time" v-model="horaireDebut" required>
             <span> à </span>
-            <select v-model.number="heureFin">
-              <option v-for="index in 23" :key="index" :value="index"><span v-if="index<10">0</span>{{index}}</option>
-            </select>
-            <span> : </span>
-            <select v-model.number="minuteFin">
-              <option v-for="index in 60" :key="index" :value="index-1"><span v-if="index<11">0</span>{{index-1}}</option>
-            </select>
+            <input type="time" v-model="horaireFin" required>
           </div>
         </div>
         <div class="lieu">
           <label for="lieu">Lieu :</label>
-          <input id="lieu" type="text" class="inputText inputLieu" v-model.trim="lieu" />
+          <input id="lieu" type="text" class="inputText inputLieu" v-model.trim="lieu" required/>
           <button class="chercherLieu">Chercher un lieu</button>
         </div>
         <div>
           <label for="nombrePlace">Places limitées :</label>
-          <input id="nombrePlace" type="number" class="place" v-model.number="nombrePlace" />
+          <input id="nombrePlace" type="number" class="place" v-model.number="nombrePlace" required />
         </div>
         <div>
           <label for="participation">Participation :</label>
-          <input id="participation" type="text" class="inputText" v-model.trim="participation" />
+          <input id="participation" type="text" class="inputText" v-model.trim="participation" required/>
         </div>
         <div>
           <label for="image">Image de l'affiche :</label>
-          <input id="image" type="file" class="inputImage" v-on:change="handleFileChange" />
+          <input id="image" type="file" class="inputImage" v-on:change="handleFileChange" required />
         </div>
         <div class="descri">
           <label for="description">Description :</label>
-          <textarea id="description" rows="5" cols="50" v-model.trim="description" ></textarea>
+          <textarea id="description" rows="5" cols="50" v-model.trim="description" required ></textarea>
         </div>
       </div>
       <div class="validation">
-        <button class="btn annuler">Annuler</button>
+        <button class="btn annuler" @click="annuler">Annuler</button>
         <input type="submit" class="btn valider" value="Valider" />
       </div>
   </form>
@@ -84,13 +64,9 @@ export default {
       nomOrganisateur: '',
       nomEvenement: '',
       themeEvenement: '',
-      jour:0,
-      mois:0,
-      annee:0,
-      heureDebut:0,
-      minuteDebut:0,
-      heureFin:0,
-      minuteFin:0,
+      date: '',
+      horaireDebut: '' ,
+      horaireFin: '',
       lieu:'',
       nombrePlace: 0,
       participation:'',
@@ -104,13 +80,30 @@ export default {
       this.fileName = file.name;
     },
     submitForm() {
-      let date=this.jour+'/'+this.mois+'/'+this.annee;
-      let heure1=this.heureDebut+':'+this.minuteDebut;
-      let heure2=this.heureFin+':'+this.minuteFin;
-      alert('date='+date+'\nheure='+heure1+' à '+heure2);
-      alert(this.fileName)
+      alert('date='+this.date+'\nheure='+this.horaireDebut+' à '+this.horaireFin);
+      alert(this.fileName);
+      this.verifier();
     },
-    
+    verifier() {
+      const propValue = {
+        nomOrganisateur: this.nomOrganisateur,
+        nomEvenement: this.nomEvenement,
+        themeEvenement: this.themeEvenement,
+        date: this.date,
+        horaireDebut: this.horaireDebut,
+        horaireFin: this.horaireFin,
+        lieu: this.lieu,
+        nombrePlace: this.nombrePlace,
+        participation: this.participation,
+        fileName: this.fileName,
+        description: this.description
+      }
+      this.$router.push({ path: "/evenementCree", query: propValue });
+    },
+    annuler() {
+      alert('annuler');
+      this.$router.push({ path: "/" });
+    }
     
   }
 }
