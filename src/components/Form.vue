@@ -29,7 +29,7 @@
         <div class="lieu">
           <label for="lieu">Lieu :</label>
           <input id="lieu" type="text" class="inputText inputLieu" v-model.trim="lieu" required/>
-          <button class="chercherLieu">Chercher un lieu</button>
+          <button class="chercherLieu" @click="rechercherLieu">Chercher un lieu</button>
         </div>
         <div>
           <label for="nombrePlace">Places limitées :</label>
@@ -103,6 +103,9 @@ export default {
     annuler() {
       alert('annuler');
       this.$router.push({ path: "/" });
+    },
+    rechercherLieu() {
+      this.$router.push({ path: "/rechercheLieu" });
     }
     
   }

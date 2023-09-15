@@ -2,8 +2,8 @@
   <Page>
     <form class="Form" @submit.prevent="submitForm">
         <div class="entete">
-          <p>001</p>
-          <p>Date : </p>
+          <p class="numero">001</p>
+          <p>Date : {{aujourdhui}} </p>
         </div>
         <h3>Informations sur l'évènement :</h3>
         <div class="acompleter">
@@ -17,12 +17,8 @@
             <p>Thème de l'évènement : {{ e.themeEvenement }}</p>
           </div>
           <div class="temps">
-            <div>
               <p>Date : {{e.date}}</p>
-            </div>
-            <div class="horaire">
-              <p>Heure : {{e.horaireDebut}} à {{e.horaireFin}}</p>
-            </div>
+              <p class="heure">Heure : {{e.horaireDebut}} à {{e.horaireFin}}</p>
           </div>
           <div class="lieu">
             <p>Lieu : {{e.lieu}}</p>
@@ -37,15 +33,17 @@
             <p>Description : {{ e.description }}</p>
           </div>
         </div>
-        <h3>Informations sur le participant :</h3>
-        <div class="acompleter" >
-          <div class="nom">
-            <label for="nomParticipant">Nom du participant :</label>
-            <input id="nomParticipant" type="text" class="inputText inputNom" v-model.trim="nomParticipant" required/>
-          </div>
-          <div>
-            <label for="nombrePlace">Paiement :</label>
-            <input id="nombrePlace" type="number" class="place" v-model.number="nombrePlace" required />
+        <div class="surLeParticipant">
+          <h3>Informations sur le participant :</h3>
+          <div class="acompleter" >
+            <div class="participant">
+              <label for="nomParticipant">Nom du participant :</label>
+              <input id="nomParticipant" type="text" class="inputText inputNom" v-model.trim="nomParticipant" required/>
+            </div>
+            <div>
+              <label for="paiement">Paiement :</label>
+              <input id="paiement" type="number" class="paiement" v-model.number="paiement" required placeholder="entrer votre numero de compte..."/>
+            </div>
           </div>
         </div>
 
@@ -85,37 +83,37 @@ export default {
   data() {
     return {
       e : this.verification,
+      aujourdhui : new Date().toDateString(),
+      nomParticipant : '',
+      paiement : ''  
     }
   },
   methods: {
-    handleFileChange(event) {
-      const file = event.target.files[0];
-      this.fileName = file.name;
-    },
     submitForm() {
-      alert('date='+this.date+'\nheure='+this.horaireDebut+' à '+this.horaireFin);
-      alert(this.fileName);
-      this.verifier();
+      alert('nomParticipant='+this.nomParticipant+'\npaiement='+this.paiement);
+      this.verifier()
     },
     verifier() {
       const propValue = {
-        nomOrganisateur: this.nomOrganisateur,
-        nomEvenement: this.nomEvenement,
-        themeEvenement: this.themeEvenement,
-        date: this.date,
-        horaireDebut: this.horaireDebut,
-        horaireFin: this.horaireFin,
-        lieu: this.lieu,
-        nombrePlace: this.nombrePlace,
-        participation: this.participation,
-        fileName: this.fileName,
-        description: this.description
+        nomOrganisateur: this.e.nomOrganisateur,
+        nomEvenement: this.e.nomEvenement,
+        themeEvenement: this.e.themeEvenement,
+        date: this.e.date,
+        horaireDebut: this.e.horaireDebut,
+        horaireFin: this.e.horaireFin,
+        lieu: this.e.lieu,
+        nombrePlace: this.e.nombrePlace,
+        participation: this.e.participation,
+        description: this.e.description,
+        nomParticipant: this.nomParticipant,
+        paiement: this.paiement
       }
-      this.$router.push({ path: "/evenementCree", query: propValue });
+      this.$router.push({ path: "/ticket", query: propValue });
     },
     annuler() {
       alert('annuler');
       this.$router.push({ path: "/" });
+      /*$router.go(-1)*/
     }
     
   },
@@ -134,14 +132,35 @@ export default {
   margin-top: 10px;
   min-height:70vh;
   padding: 20px 30px;
+  font-size:20px;
 }
 .entete{
   display: flex;
   justify-content: space-between;
 }
+.numero{
+  background-color: rgba(237, 237, 237, 1);
+  padding: 5px 20px;
+}
+.surLeParticipant{
+  margin-top: 50px;
+}
 .acompleter{
   text-align: left;
   
+}
+.temps{
+  display: flex;
+}
+p{
+  margin: 5px 0;
+}
+.temps p{
+  margin-top: 0;
+  margin-bottom :0;
+}
+.heure{
+  margin-left: 50px;
 }
 h3{
   text-align: left;
@@ -149,15 +168,21 @@ h3{
 label{
   margin-right: 10px;
 }
-input, select{
+input{
   background-color:transparent;
+}
+p, h3, label, input{
   font-size: 20px;
 }
 .inputText{
   border-width: 0 0 1px 0;
+  width: 500px;
 }
-.place{
-  width: 75px;
+.participant{
+  margin-bottom: 5px;
+}
+.paiement{
+  width: 50%;
   height: 25px;
 }
 .validation{

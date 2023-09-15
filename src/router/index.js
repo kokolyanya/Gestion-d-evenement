@@ -55,7 +55,26 @@ const routes = [
     props: (route) => ({
       verification: route.query
     }),
-  }
+  },
+  {
+    path: '/ticket',
+    name: 'ticket',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../components/Ticket.vue'),
+    props: (route) => ({
+      verification: route.query
+    }),
+  },
+  {
+    path: '/rechercheLieu',
+    name: 'rechercheLieu',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../components/RechercheLieu.vue')
+  },
 ]
 
 const router = createRouter({
