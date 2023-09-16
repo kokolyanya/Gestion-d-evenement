@@ -11,29 +11,32 @@
             <label for="region">Région :</label>
             <input id="region" type="text" class="inputText inputNom" v-model.trim="region" required/>
           </div>
-          <div class="theme">
+          <div class="nom">
             <label for="nomPlace">Nom de la place :</label>
             <input id="nomPlace" type="text" class="inputText inputTheme" v-model.trim="nomPlace" required/>
           </div>
           <div>
             <label for="numeroSalle">Numéro de la salle :</label>
-            <input id="numeroSalle" type="number" class="place" v-model.number="numeroSalle" required />
+            <input id="numeroSalle" type="number" class="numero" v-model.number="numeroSalle" required />
           </div>
-          <div class="theme">
+          <div class="nom">
             <label for="nomSalle">Nom de la salle :</label>
             <input id="nomSalle" type="text" class="inputText inputTheme" v-model.trim="nomSalle" required/>
           </div>
           <div>
             <label for="numeroEtage">Numéro d'étage :</label>
-            <input id="numeroEtage" type="number" class="place" v-model.number="numeroEtage" required />
+            <input id="numeroEtage" type="number" class="numero" v-model.number="numeroEtage" required />
           </div>
           <div>
             <label for="toiture">Toiture :</label>
-            <input id="toiture" type="number" class="place" v-model.number="toiture" required />
+            <input type="radio" id="oui" class="toiture" v-model.trim="toiture" name="toiture" value="oui" />
+            <label for="oui">oui</label>
+            <input type="radio" id="non" class="toiture" v-model.trim="toiture" name="toiture" value="non" />
+            <label for="non">non</label>
           </div>
           <div>
             <label for="nombrePlace">Nombre de place :</label>
-            <input id="nombrePlace" type="number" class="place" v-model.number="nombrePlace" required />
+            <input id="nombrePlace" type="number" class="nombre" v-model.number="nombrePlace" required />
           </div>
         </div>
         <div class="validation">
@@ -52,31 +55,49 @@ export default {
   name: 'RechercheLieu',
   data() {
     return {
-      
+      pays:'',
+      region:'',
+      nomPlace:'',
+      nomSalle:'',
+      numeroSalle:'',
+      numeroEtage:'',
+      toiture:'',
+      nombrePlace:''
     }
   },
   methods: {
     submitForm() {
-      alert('nomParticipant='+this.nomParticipant+'\npaiement='+this.paiement);
-      this.verifier()
+      alert('pays='+this.pays+'\nregion='+this.region+'\nnomPlace='+this.nomPlace+'\nnomSalle='+this.nomSalle+'\nnumeroSalle='+this.numeroSalle+'\nnumeroEtage='+this.numeroEtage+'\ntoiture='+this.toiture+'\nnombrePlace='+this.nombrePlace);
+      this.envoyer()
     },
-    verifier() {
+    envoyer() {
       const propValue = {
-        nomOrganisateur: this.e.nomOrganisateur,
-        nomEvenement: this.e.nomEvenement,
-        themeEvenement: this.e.themeEvenement,
-        date: this.e.date,
-        horaireDebut: this.e.horaireDebut,
-        horaireFin: this.e.horaireFin,
-        lieu: this.e.lieu,
-        nombrePlace: this.e.nombrePlace,
-        participation: this.e.participation,
-        description: this.e.description,
-        nomParticipant: this.nomParticipant,
-        paiement: this.paiement
+        pays:this.pays,
+        region:this.region,
+        nomPlace:this.nomPlace,
+        nomSalle:this.nomSalle,
+        numeroSalle:this.numeroSalle,
+        numeroEtage:this.numeroEtage,
+        toiture:this.toiture,
+        nombrePlace:this.nombrePlace
       }
-      this.$router.push({ path: "/ticket", query: propValue });
+      this.$router.push({ path: "/choisirLieu", query: propValue });
     },
+    filtrer(filtreur){
+      let s=this.selected;
+      alert("selectionné:"+s+"here");
+      alert(this.evenement[0].nomEvenement);
+      if(!s) this.eventFiltre = this.evenement.filter(e => {
+        for (let key in e) {
+          if (typeof e[key] === 'string' && e[key].includes(filtreur)) {
+            return true;
+          }
+        }
+        return false;
+      });
+      else this.eventFiltre = this.evenement.filter(e => e[s].includes(filtreur));
+      alert(this.eventFiltre);
+    }
     
   },
   components: {
@@ -124,7 +145,17 @@ p, h3, label, input{
 }
 .inputText{
   border-width: 0 0 1px 0;
-  width: 500px;
+  width: 75%;
+}
+.numero{
+  width: 25px;
+}
+.nombre{
+  width: 75px;
+}
+.nom{
+  display: flex;
+  justify-content: space-between;
 }
 .validation{
   display: flex;

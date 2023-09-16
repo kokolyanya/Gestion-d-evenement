@@ -75,6 +75,28 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../components/RechercheLieu.vue')
   },
+  {
+    path: '/choisirLieu',
+    name: 'choisirLieu',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../components/ChoisirLieu.vue'),
+    props: (route) => ({
+      verification: route.query
+    }),
+  },
+  {
+    path: '/voirLieu',
+    name: 'voirLieu',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../components/VoirLieu.vue'),
+    props: (route) => ({
+      verification: route.query
+    }),
+  }
 ]
 
 const router = createRouter({
