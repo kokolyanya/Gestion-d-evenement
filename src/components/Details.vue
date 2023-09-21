@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import data from '@/data/evenement-data.js';
+import {data} from '@/data/evenement-data.js';
 
 export default {
   name: 'Details',

@@ -36,7 +36,7 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue';
 import Entete from '@/components/Entete.vue';
-import data from '@/data/evenement-data.js';
+import {data} from '@/data/evenement-data.js';
 
 export default {
   name: 'Chercher',

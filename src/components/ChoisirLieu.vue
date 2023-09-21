@@ -1,12 +1,12 @@
 <template>
   <Page>
     <p class="annuler" @click="$router.go(-1)"><span class="material-icons">reply</span>Annuler</p>
-    <form class="unLieu" @submit.prevent="submitForm">
-      <div class="lieuChercher"  >
-        <p>Nom de la salle : {{e.nomSalle}}</p>
-        <p>Nom de la place : {{e.nomPlace}}</p>
-        <p>Région : {{e.region}}</p>
-        <p>Pays : {{e.pays}}</p>
+    <form class="unLieu" @submit.prevent="submitForm" v-for="item in verification">
+      <div class="lieuChercher">
+        <p>Nom de la salle : {{ this.lieux[item-1]["nomSalle"] }}</p>
+        <p>Nom de la place : {{ this.lieux[item-1]["nomPlace"] }}</p>
+        <p>Région : {{ this.lieux[item-1]["region"] }}</p>
+        <p>Pays : {{ this.lieux[item-1]["pays"] }}</p>
       </div>       
       <div class="validation">
         <input type="submit" class="btn valider" value="Choisir" />
@@ -18,34 +18,30 @@
 
 <script>
 import Page from '@/components/Page.vue';
+import {lieux} from '@/data/evenement-data.js';
 
 export default {
   name: 'ChoisirLieu',
   props: {
     verification: {
-      type: Object,
-      required: true,
-      default: () => ({
-        pays:'',
-        region:'',
-        nomPlace:'',
-        nomSalle:'',
-        numeroSalle:'',
-        numeroEtage:'',
-        toiture:'',
-        nombrePlace:''
-      })
+      type: Array,
+      required: true
     }
   },
   data() {
     return {
-      e : this.verification,
+      lieux : lieux,
       
     }
   },
-  methods: {
+  methods: {    
     submitForm() {
-      alert('nomParticipant='+this.nomParticipant+'\npaiement='+this.paiement);
+      if (this.verification && this.verification.length > 0) {
+        alert("coucou oh " + this.verification);
+      } else {
+        alert("tsy coucou " + this.verification)
+      }
+      //alert('pays='+this.verification);
       
     },
     voir() {

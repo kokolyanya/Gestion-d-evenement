@@ -9,23 +9,23 @@
           </div>
           <div class="nom">
             <label for="region">Région :</label>
-            <input id="region" type="text" class="inputText inputNom" v-model.trim="region" required/>
+            <input id="region" type="text" class="inputText inputNom" v-model.trim="region" />
           </div>
           <div class="nom">
             <label for="nomPlace">Nom de la place :</label>
-            <input id="nomPlace" type="text" class="inputText inputTheme" v-model.trim="nomPlace" required/>
+            <input id="nomPlace" type="text" class="inputText inputTheme" v-model.trim="nomPlace" />
           </div>
           <div>
             <label for="numeroSalle">Numéro de la salle :</label>
-            <input id="numeroSalle" type="number" class="numero" v-model.number="numeroSalle" required />
+            <input id="numeroSalle" type="number" class="numero" v-model.number="numeroSalle"  />
           </div>
           <div class="nom">
             <label for="nomSalle">Nom de la salle :</label>
-            <input id="nomSalle" type="text" class="inputText inputTheme" v-model.trim="nomSalle" required/>
+            <input id="nomSalle" type="text" class="inputText inputTheme" v-model.trim="nomSalle" />
           </div>
           <div>
             <label for="numeroEtage">Numéro d'étage :</label>
-            <input id="numeroEtage" type="number" class="numero" v-model.number="numeroEtage" required />
+            <input id="numeroEtage" type="number" class="numero" v-model.number="numeroEtage"  />
           </div>
           <div>
             <label for="toiture">Toiture :</label>
@@ -36,7 +36,7 @@
           </div>
           <div>
             <label for="nombrePlace">Nombre de place :</label>
-            <input id="nombrePlace" type="number" class="nombre" v-model.number="nombrePlace" required />
+            <input id="nombrePlace" type="number" class="nombre" v-model.number="nombrePlace"  />
           </div>
         </div>
         <div class="validation">
@@ -50,6 +50,7 @@
 
 <script>
 import Page from '@/components/Page.vue';
+import {lieux} from '@/data/evenement-data.js';
 
 export default {
   name: 'RechercheLieu',
@@ -62,16 +63,24 @@ export default {
       numeroSalle:'',
       numeroEtage:'',
       toiture:'',
-      nombrePlace:''
+      nombrePlace:'',
+      lieuSuggere: [],
+      lieux : lieux,
     }
   },
   methods: {
     submitForm() {
       alert('pays='+this.pays+'\nregion='+this.region+'\nnomPlace='+this.nomPlace+'\nnomSalle='+this.nomSalle+'\nnumeroSalle='+this.numeroSalle+'\nnumeroEtage='+this.numeroEtage+'\ntoiture='+this.toiture+'\nnombrePlace='+this.nombrePlace);
-      this.envoyer()
+      this.filtrer();
+      this.envoyer();
     },
     envoyer() {
-      const propValue = {
+      const propValue = this.lieuSuggere;
+      alert("lieu suggere : "+propValue)
+      this.$router.push({ path: "/choisirLieu", query: propValue });
+    },
+    filtrer(){
+      const lieuCherche = {
         pays:this.pays,
         region:this.region,
         nomPlace:this.nomPlace,
@@ -81,22 +90,20 @@ export default {
         toiture:this.toiture,
         nombrePlace:this.nombrePlace
       }
-      this.$router.push({ path: "/choisirLieu", query: propValue });
-    },
-    filtrer(filtreur){
-      let s=this.selected;
-      alert("selectionné:"+s+"here");
-      alert(this.evenement[0].nomEvenement);
-      if(!s) this.eventFiltre = this.evenement.filter(e => {
+      alert("filtrage");
+      const filteredLieux = this.lieux.filter(e => {
         for (let key in e) {
-          if (typeof e[key] === 'string' && e[key].includes(filtreur)) {
+          if (e[key].toString().includes(lieuCherche[key])) {
             return true;
           }
         }
         return false;
       });
-      else this.eventFiltre = this.evenement.filter(e => e[s].includes(filtreur));
-      alert(this.eventFiltre);
+      for (let item in filteredLieux) {
+        this.lieuSuggere.push(filteredLieux[item].id);
+      };
+      alert(this.lieuSuggere);
+
     }
     
   },

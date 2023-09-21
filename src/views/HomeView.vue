@@ -17,7 +17,7 @@
 <script>
 // @ is an alias to /src
 import Details from '@/components/Details.vue';
-import data from '@/data/evenement-data.js';
+import {data} from '@/data/evenement-data.js';
 
 export default {
   name: 'HomeView',
