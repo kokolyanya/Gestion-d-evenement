@@ -12,7 +12,7 @@
         <p>Lieu : {{e.lieu}}</p>
         <p>Nombre de place : {{e.nombrePlace}}</p>
         <p>Participation : {{e.participation}}</p>
-        <button class="btn modifier" @click="afficher">Modifier</button>
+        <button class="btn modifier" @click="modifier">Modifier</button>
       </div>
     </div>
   </div>
@@ -49,9 +49,9 @@ export default {
     }
   },
   methods: {
-    afficher() {
-      alert("Modifier "+this.verification.nomEvenement)
-      this.$router.push({ path: "/creer" });
+    modifier() {
+      alert("Modifier "+this.verification.nomEvenement+" en cours");
+      /*this.$router.push({ path: "/creer" });*/
     }
   }
 }

@@ -56,9 +56,14 @@
 </template>
 
 <script>
+import {lieux} from '@/data/evenement-data.js';
+
 export default {
   name: 'Form',
-   data() {
+  props: {
+    id: Number,
+  },
+  data() {
     return {
       offset: 2022,
       nomOrganisateur: '',
@@ -67,8 +72,8 @@ export default {
       date: '',
       horaireDebut: '' ,
       horaireFin: '',
-      lieu:'',
-      nombrePlace: 0,
+      lieu: this.id? lieux[this.id-1]["nomPlace"]+","+lieux[this.id-1]["region"]+","+lieux[this.id-1]["pays"] : '',
+      nombrePlace: '',
       participation:'',
       fileName: null,
       description:''

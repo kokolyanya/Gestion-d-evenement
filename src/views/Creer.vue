@@ -1,6 +1,6 @@
 <template>
   <div class="creer">
-    <Form/>
+    <Form :id="id"/>
   </div>
 </template>
 
@@ -12,6 +12,9 @@ export default {
   name: 'Creer',
   components: {
     Form
+  },
+  props : {
+    id: Number,
   }
 }
 </script>

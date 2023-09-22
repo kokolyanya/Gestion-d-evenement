@@ -1,7 +1,7 @@
 <template>
   <Page>
-    <p class="annuler" @click="$router.go(-1)"><span class="material-icons">reply</span>Annuler</p>
-    <form class="unLieu" @submit.prevent="submitForm" v-for="item in verification">
+    <p class="annuler" @click="annuler"><span class="material-icons">reply</span>Annuler</p>
+    <form class="unLieu" @submit.prevent="submitForm(item)" v-for="item in verification">
       <div class="lieuChercher">
         <p>Nom de la salle : {{ this.lieux[item-1]["nomSalle"] }}</p>
         <p>Nom de la place : {{ this.lieux[item-1]["nomPlace"] }}</p>
@@ -10,7 +10,7 @@
       </div>       
       <div class="validation">
         <input type="submit" class="btn valider" value="Choisir" />
-        <button class="btn voir" @click="voir">Voir</button>
+        <button class="btn voir" @click="voir(item)">Voir</button>
       </div>
     </form>
   </Page>
@@ -35,34 +35,20 @@ export default {
     }
   },
   methods: {    
-    submitForm() {
-      if (this.verification && this.verification.length > 0) {
-        alert("coucou oh " + this.verification);
-      } else {
-        alert("tsy coucou " + this.verification)
-      }
-      //alert('pays='+this.verification);
+    submitForm(item) {
+      alert('pays='+this.lieux[item-1]["pays"]+'\nregion='+this.lieux[item-1]["region"]);
+      this.$router.push({ path: "/creer", query: {id : item} });
       
     },
-    voir() {
-      const propValue = {
-        pays:this.pays,
-        region:this.region,
-        nomPlace:this.nomPlace,
-        nomSalle:this.nomSalle,
-        numeroSalle:this.numeroSalle,
-        numeroEtage:this.numeroEtage,
-        toiture:this.toiture,
-        nombrePlace:this.nombrePlace
-      }
-      this.$router.push({ path: "/voirLieu", query: propValue });
+    voir(item) {
+      alert(item);
+      alert(this.lieux[item-1]["pays"]);
+      this.$router.push({ path: "/voirLieu", query: {id : item} });
     },
     annuler() {
       alert('annuler');
-      this.$router.push({ path: "/" });
-      /*$router.go(-1)*/
+      this.$router.push({ path: "/creer" });
     },
-    
     
   },
   components: {

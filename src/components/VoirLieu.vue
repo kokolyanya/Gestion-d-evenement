@@ -1,7 +1,7 @@
 <template>
   <Page>
     <form class="unLieu" @submit.prevent="submitForm">
-      <div class="lieu"  >
+      <div class="lieu" >
         
       </div>       
       <div class="validation">
@@ -14,48 +14,24 @@
 
 <script>
 import Page from '@/components/Page.vue';
+import {lieux} from '@/data/evenement-data.js';
 
 export default {
   name: 'VoirLieu',
   props: {
-    verification: {
-      type: Object,
-      required: true,
-      default: () => ({
-        pays:'',
-        region:'',
-        nomPlace:'',
-        nomSalle:'',
-        numeroSalle:'',
-        numeroEtage:'',
-        toiture:'',
-        nombrePlace:''
-      })
-    }
+    id: Number,
   },
   data() {
     return {
-      e : this.verification,
+      lieux: lieux,
       
     }
   },
   methods: {
     submitForm() {
-      alert('nomParticipant='+this.nomParticipant+'\npaiement='+this.paiement);
-      
-    },
-    voir() {
-      const propValue = {
-        pays:this.pays,
-        region:this.region,
-        nomPlace:this.nomPlace,
-        nomSalle:this.nomSalle,
-        numeroSalle:this.numeroSalle,
-        numeroEtage:this.numeroEtage,
-        toiture:this.toiture,
-        nombrePlace:this.nombrePlace
-      }
-      this.$router.push({ path: "/voirLieu", query: propValue });
+      alert('pays='+this.lieux[this.id-1]["pays"]+'\nregion='+this.lieux[this.id-1]["region"]);
+
+      this.$router.push({ path: "/creer", query: {id : this.id} });
     },
     
   },

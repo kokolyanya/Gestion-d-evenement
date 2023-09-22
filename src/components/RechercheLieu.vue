@@ -93,8 +93,10 @@ export default {
       alert("filtrage");
       const filteredLieux = this.lieux.filter(e => {
         for (let key in e) {
-          if (e[key].toString().includes(lieuCherche[key])) {
-            return true;
+          if (lieuCherche[key] != ''){
+            if (e[key].toString().includes(lieuCherche[key])) {
+              return true;
+            }
           }
         }
         return false;

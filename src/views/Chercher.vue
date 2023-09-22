@@ -2,7 +2,7 @@
   <div class="chercher">
     <div class="recherche">
       <span class="material-icons">search</span> 
-      <input type="text" class="inputChercher" v-on:change="handleChange"/>
+      <input type="text" class="inputChercher" v-on:input="handleChange"/>
       <select v-model="selected">
         <option value="">Chercher un évènement</option>
         <option value="nomEvenement" class="apartirnom">À partir du nom de l'évènement</option>
@@ -11,22 +11,22 @@
       </select>
     </div>
     <span>.</span>
-    <div class="eventChercher" v-for="e in eventFiltre" >
+    <div class="eventChercher" v-for="e in eventFiltre" @click="detailler(e)">
       <img :src="require('@/assets/' +e.fileName)" alt="e.nomEvenement" title="e.nomEvenement" />
       <div class="aproposEvent">
         <p>{{e.nomEvenement}}</p>
         <p>Thème : {{e.themeEvenement}}</p>
         <p>Lieu : {{e.lieu}}</p>
-        <p>Date : {{e.jour}}/{{e.mois}}/{{e.annee}}</p>
+        <p>Date : {{e.date}}</p>
       </div>
     </div>
-    <div class="eventChercher" v-for="e in eventFiltre" >
+    <div class="eventChercher" v-for="e in eventFiltre" @click="detailler(e)">
       <img :src="require('@/assets/' +e.fileName)" alt="e.nomEvenement" title="e.nomEvenement" />
       <div class="aproposEvent">
         <p>{{e.nomEvenement}}</p>
         <p>Thème : {{e.themeEvenement}}</p>
         <p>Lieu : {{e.lieu}}</p>
-        <p>Date : {{e.jour}}/{{e.mois}}/{{e.annee}}</p>
+        <p>Date : {{e.date}}</p>
       </div>
     </div>
   </div>
@@ -51,11 +51,9 @@ export default {
     }
   },
   methods : {
-    handleChange(event){
-      
-        alert(this.selected);
-        this.filtrer(event.target.value);
-      
+    handleChange(event){      
+      alert(this.selected);
+      this.filtrer(event.target.value);      
     },
     filtrer(filtreur){
       let s=this.selected;
@@ -71,6 +69,11 @@ export default {
       });
       else this.eventFiltre = this.evenement.filter(e => e[s].includes(filtreur));
       alert(this.eventFiltre);
+    },
+    detailler(e) {
+      alert("details");
+      const propValue = e.id;
+      this.$router.push({ path: "/details", query: { value: propValue } });
     }
   }
 }

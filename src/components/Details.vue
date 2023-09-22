@@ -51,8 +51,8 @@ export default {
       this.$router.push({ path: "/participer", query: propValue });
     },
     modifier() {
-      alert("Modifier "+this.e.nomEvenement)
-      this.$router.push({ path: "/creer" });
+      alert("Modifier "+this.e.nomEvenement+" en cours")
+      /*this.$router.push({ path: "/creer" });*/
     }
   }
 }
