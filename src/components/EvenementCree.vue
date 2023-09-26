@@ -19,9 +19,6 @@
 </template>
 
 <script>
-import data from '@/data/evenement-data.js';
-import PropTypes from 'prop-types';
-
 export default {
   name: 'EvenementCree',
   props: {
@@ -36,7 +33,7 @@ export default {
         horaireDebut: '',
         horaireFin: '',
         lieu: '',
-        nombrePlace: 0,
+        nombrePlace: '',
         participation: '',
         fileName: '',
         description: ''
@@ -50,8 +47,7 @@ export default {
   },
   methods: {
     modifier() {
-      alert("Modifier "+this.verification.nomEvenement+" en cours");
-      /*this.$router.push({ path: "/creer" });*/
+      this.$router.go(-1);
     }
   }
 }

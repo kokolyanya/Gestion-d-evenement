@@ -18,7 +18,6 @@
 
 <script>
 import Page from '@/components/Page.vue';
-import {lieux} from '@/data/evenement-data.js';
 
 export default {
   name: 'ChoisirLieu',
@@ -30,23 +29,19 @@ export default {
   },
   data() {
     return {
-      lieux : lieux,
+      lieux : this.$store.state.lieux,
       
     }
   },
   methods: {    
     submitForm(item) {
-      alert('pays='+this.lieux[item-1]["pays"]+'\nregion='+this.lieux[item-1]["region"]);
-      this.$router.push({ path: "/creer", query: {id : item} });
+      this.$router.push({ path: "/creer", query: {idLieu : item} });
       
     },
     voir(item) {
-      alert(item);
-      alert(this.lieux[item-1]["pays"]);
       this.$router.push({ path: "/voirLieu", query: {id : item} });
     },
     annuler() {
-      alert('annuler');
       this.$router.push({ path: "/creer" });
     },
     

@@ -56,27 +56,31 @@
 </template>
 
 <script>
-import {lieux} from '@/data/evenement-data.js';
-
 export default {
   name: 'Form',
   props: {
-    id: Number,
+    idLieu: Number,
+    idEvent: Number
   },
   data() {
     return {
       offset: 2022,
-      nomOrganisateur: '',
-      nomEvenement: '',
-      themeEvenement: '',
-      date: '',
-      horaireDebut: '' ,
-      horaireFin: '',
-      lieu: this.id? lieux[this.id-1]["nomPlace"]+","+lieux[this.id-1]["region"]+","+lieux[this.id-1]["pays"] : '',
-      nombrePlace: '',
-      participation:'',
+      nomOrganisateur: this.idEvent? this.$store.state.evenement[this.idEvent-1]["nomOrganisateur"] : '',
+      nomEvenement: this.idEvent? this.$store.state.evenement[this.idEvent-1]["nomEvenement"] : '',
+      themeEvenement: this.idEvent? this.$store.state.evenement[this.idEvent-1]["themeEvenement"] : '',
+      date: this.idEvent? this.$store.state.evenement[this.idEvent-1]["date"] : '',
+      horaireDebut: this.idEvent? this.$store.state.evenement[this.idEvent-1]["horaireDebut"] : '' ,
+      horaireFin: this.idEvent? this.$store.state.evenement[this.idEvent-1]["horaireFin"] : '',
+      lieu: this.idLieu? 
+        this.$store.state.lieux[this.idLieu-1]["nomPlace"]+","
+        +this.$store.state.lieux[this.idLieu-1]["region"]+","
+        +this.$store.state.lieux[this.idLieu-1]["pays"] 
+        : 
+        (this.idEvent? this.$store.state.evenement[this.idEvent-1]["lieu"] : ''),
+      nombrePlace: this.idEvent? this.$store.state.evenement[this.idEvent-1]["nombrePlace"] : '',
+      participation: this.idEvent? this.$store.state.evenement[this.idEvent-1]["participation"] : '',
       fileName: null,
-      description:''
+      description: this.idEvent? this.$store.state.evenement[this.idEvent-1]["description"] : ''
     };
   },
   methods: {
@@ -85,12 +89,11 @@ export default {
       this.fileName = file.name;
     },
     submitForm() {
-      alert('date='+this.date+'\nheure='+this.horaireDebut+' à '+this.horaireFin);
-      alert(this.fileName);
       this.verifier();
     },
     verifier() {
       const propValue = {
+        id: this.idEvent? this.idEvent : this.$store.state.evenement.length+1,
         nomOrganisateur: this.nomOrganisateur,
         nomEvenement: this.nomEvenement,
         themeEvenement: this.themeEvenement,
@@ -102,12 +105,21 @@ export default {
         participation: this.participation,
         fileName: this.fileName,
         description: this.description
+      };
+      if(this.idEvent){
+        this.$store.commit('modifierEvenement', {
+          idEvent: this.idEvent-1,
+          nouvelleValeur: propValue
+        });
+      }
+      else{
+        this.$store.commit('nouvelEvenement', propValue);
       }
       this.$router.push({ path: "/evenementCree", query: propValue });
     },
     annuler() {
-      alert('annuler');
-      this.$router.push({ path: "/" });
+      this.$router.go(-1);
+      //this.$router.push({ path: "/" });
     },
     rechercherLieu() {
       this.$router.push({ path: "/rechercheLieu" });

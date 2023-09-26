@@ -17,7 +17,6 @@
 <script>
 // @ is an alias to /src
 import Details from '@/components/Details.vue';
-import {data} from '@/data/evenement-data.js';
 
 export default {
   name: 'HomeView',
@@ -26,7 +25,13 @@ export default {
   },
   data() {
     return {
-      evenement : data,
+      
+    }
+  },
+  computed: {
+    evenement(){
+      this.$store.dispatch('loadEvenements');
+      return this.$store.state.evenement;
     }
   },
   methods : {

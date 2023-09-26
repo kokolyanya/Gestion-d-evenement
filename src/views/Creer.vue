@@ -1,6 +1,6 @@
 <template>
   <div class="creer">
-    <Form :id="id"/>
+    <Form :idLieu="idLieu" :idEvent="idEvent" />
   </div>
 </template>
 
@@ -14,7 +14,8 @@ export default {
     Form
   },
   props : {
-    id: Number,
+    idLieu: Number,
+    idEvent: Number
   }
 }
 </script>

@@ -20,8 +20,6 @@
 </template>
 
 <script>
-import {data} from '@/data/evenement-data.js';
-
 export default {
   name: 'Details',
   props: {
@@ -29,12 +27,11 @@ export default {
   },
   data() {
     return {
-      e : data[this.id-1],
+      e : this.$store.state.evenement[this.id-1],
     }
   },
   methods: {
     participer() {
-      alert("Participer à "+this.e.nomEvenement);
       const propValue = {
         nomOrganisateur: this.e.nomOrganisateur,
         nomEvenement: this.e.nomEvenement,
@@ -51,8 +48,7 @@ export default {
       this.$router.push({ path: "/participer", query: propValue });
     },
     modifier() {
-      alert("Modifier "+this.e.nomEvenement+" en cours")
-      /*this.$router.push({ path: "/creer" });*/
+      this.$router.push({ path: "/creer", query: { idEvent : this.id} });
     }
   }
 }

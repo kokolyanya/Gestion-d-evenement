@@ -50,7 +50,6 @@
 
 <script>
 import Page from '@/components/Page.vue';
-import {lieux} from '@/data/evenement-data.js';
 
 export default {
   name: 'RechercheLieu',
@@ -65,18 +64,16 @@ export default {
       toiture:'',
       nombrePlace:'',
       lieuSuggere: [],
-      lieux : lieux,
+      lieux : this.$store.state.lieux,
     }
   },
   methods: {
     submitForm() {
-      alert('pays='+this.pays+'\nregion='+this.region+'\nnomPlace='+this.nomPlace+'\nnomSalle='+this.nomSalle+'\nnumeroSalle='+this.numeroSalle+'\nnumeroEtage='+this.numeroEtage+'\ntoiture='+this.toiture+'\nnombrePlace='+this.nombrePlace);
       this.filtrer();
       this.envoyer();
     },
     envoyer() {
       const propValue = this.lieuSuggere;
-      alert("lieu suggere : "+propValue)
       this.$router.push({ path: "/choisirLieu", query: propValue });
     },
     filtrer(){
@@ -90,7 +87,6 @@ export default {
         toiture:this.toiture,
         nombrePlace:this.nombrePlace
       }
-      alert("filtrage");
       const filteredLieux = this.lieux.filter(e => {
         for (let key in e) {
           if (lieuCherche[key] != ''){
@@ -104,7 +100,6 @@ export default {
       for (let item in filteredLieux) {
         this.lieuSuggere.push(filteredLieux[item].id);
       };
-      alert(this.lieuSuggere);
 
     }
     

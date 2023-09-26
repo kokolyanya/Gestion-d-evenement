@@ -14,7 +14,6 @@
 
 <script>
 import Page from '@/components/Page.vue';
-import {lieux} from '@/data/evenement-data.js';
 
 export default {
   name: 'VoirLieu',
@@ -23,15 +22,13 @@ export default {
   },
   data() {
     return {
-      lieux: lieux,
+      lieux : this.$store.state.lieux,
       
     }
   },
   methods: {
     submitForm() {
-      alert('pays='+this.lieux[this.id-1]["pays"]+'\nregion='+this.lieux[this.id-1]["region"]);
-
-      this.$router.push({ path: "/creer", query: {id : this.id} });
+      this.$router.push({ path: "/creer", query: {idLieu : this.id} });
     },
     
   },

@@ -90,7 +90,6 @@ export default {
   },
   methods: {
     submitForm() {
-      alert('nomParticipant='+this.nomParticipant+'\npaiement='+this.paiement);
       this.verifier()
     },
     verifier() {
@@ -111,7 +110,6 @@ export default {
       this.$router.push({ path: "/ticket", query: propValue });
     },
     annuler() {
-      alert('annuler');
       this.$router.push({ path: "/" });
       /*$router.go(-1)*/
     }

@@ -34,31 +34,26 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
 import Entete from '@/components/Entete.vue';
-import {data} from '@/data/evenement-data.js';
 
 export default {
   name: 'Chercher',
   components: {
-    HelloWorld, Entete
+    Entete
   },
   data() {
     return {
-      evenement : data,
+      evenement : this.$store.state.evenement,
       eventFiltre : [],
       selected : "",
     }
   },
   methods : {
-    handleChange(event){      
-      alert(this.selected);
+    handleChange(event){     
       this.filtrer(event.target.value);      
     },
     filtrer(filtreur){
       let s=this.selected;
-      alert("selectionné:"+s+"here");
-      alert(this.evenement[0].nomEvenement);
       if(!s) this.eventFiltre = this.evenement.filter(e => {
         for (let key in e) {
           if (typeof e[key] === 'string' && e[key].includes(filtreur)) {
@@ -68,10 +63,8 @@ export default {
         return false;
       });
       else this.eventFiltre = this.evenement.filter(e => e[s].includes(filtreur));
-      alert(this.eventFiltre);
     },
     detailler(e) {
-      alert("details");
       const propValue = e.id;
       this.$router.push({ path: "/details", query: { value: propValue } });
     }

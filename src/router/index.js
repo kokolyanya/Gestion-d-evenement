@@ -15,7 +15,8 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Creer.vue'),
     props: (route) => ({
-      id: route.query.id,
+      idLieu: route.query.idLieu,
+      idEvent: route.query.idEvent
     }),
   },
   {
