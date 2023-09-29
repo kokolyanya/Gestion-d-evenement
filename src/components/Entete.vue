@@ -16,7 +16,21 @@ export default {
 h1{
   color: white;
   font-weight: bold;
-  font-size: 40px;
-  margin-top: 50px;
+  font-size: 20px;
+  margin-top: 5px;
+}
+@media only screen and (min-width: 525px) {
+  /* For tablets: */
+  h1{
+    font-size: 30px;
+    margin-top: 20px;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  /* For desktop: */
+  h1{
+    font-size: 35px;
+    margin-top: 50px;
+  }
 }
 </style>

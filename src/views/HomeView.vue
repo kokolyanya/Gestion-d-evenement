@@ -46,7 +46,7 @@ export default {
 <style scoped>
 .home{
   background-color: white;
-  height: 77vh;
+  height: 20vh;
   border-radius: 0 0 50px 50px;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -63,6 +63,24 @@ export default {
 img{
   width: 400px;
   height : 400px;
+}
+@media only screen and (min-width: 300px) {
+  /* For tablets: */
+  .home{
+    height: 40vh;
+  }
+}
+@media only screen and (min-width: 525px) {
+  /* For tablets: */
+  .home{
+    height: 65vh;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  /* For desktop: */
+  .home{
+    height: 70vh;
+  }
 }
 
 </style>

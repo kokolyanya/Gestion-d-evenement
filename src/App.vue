@@ -41,13 +41,34 @@ nav {
 nav a {
   text-decoration: none;
   color: white;
-  background-color: black;
-  padding: 10px 50px 5px 50px;
-  font-size: 30px;
+  padding: 5px 0px;
+  font-size: 10px;
+  width: 33%;
 }
 
 nav a.router-link-exact-active {
-  border-bottom: solid 3px white;
+  border-bottom: solid 1px white;
+}
+
+@media only screen and (min-width: 525px) {
+  /* For tablets: */
+  nav a{
+    font-size: 15px;
+  }
+  nav a.router-link-exact-active {
+    border-bottom: solid 2px white;
+  }
+
+}
+@media only screen and (min-width: 1000px) {
+  /* For desktop: */
+  nav a{
+    font-size: 20px;
+  }
+  nav a.router-link-exact-active {
+    border-bottom: solid 2px white;
+  }
+
 }
 
 </style>
