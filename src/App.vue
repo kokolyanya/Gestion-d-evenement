@@ -65,10 +65,12 @@ nav a.router-link-exact-active {
   nav a{
     font-size: 20px;
   }
-  nav a.router-link-exact-active {
-    border-bottom: solid 2px white;
+}
+@media only screen and (min-width: 1500px) {
+  /* For desktop: */
+  nav a{
+    font-size: 25px;
   }
-
 }
 
 </style>

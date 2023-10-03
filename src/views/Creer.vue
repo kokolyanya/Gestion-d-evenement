@@ -23,11 +23,29 @@ export default {
 <style scoped>
 .creer{
   background-color: white;
-  height: 77vh;
+  height: 60vh;
   border-radius: 0 0 50px 50px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
-.creer::-webkit-scrollbar { width: 0 !important }  
+.creer::-webkit-scrollbar { width: 0 !important } 
 
+@media only screen and (min-height: 500px) {
+  /* For tablets: */
+  .creer{
+    height: 60vh;
+  }
+}
+@media only screen and (min-height: 800px) {
+  /* For tablets: */
+  .creer{
+    height: 75vh;
+  }
+}
+@media only screen and (min-height: 1000px) {
+  /* For tablets: */
+  .creer{
+    height: 79vh;
+  }
+}
 </style>

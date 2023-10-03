@@ -75,26 +75,26 @@ export default {
 <style scoped>
 .chercher{
   background-color: white;
-  height: 77vh;
+  height: 50vh;
   border-radius: 0 0 50px 50px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 .chercher::-webkit-scrollbar { width: 0 !important }  
 
-input,select{
-  font-size: 20px;
+input, select, option, .aproposEvent{
+  font-size: 8px;
 }
 .inputChercher{
-  border-width: 0 0 5px 0;
-  width: 60%;
-  padding-top: 20px;
+  border-width: 0 0 2px 0;
+  width: 40%;
+  padding-top: 10px;
 }
 select{
   border-color: rgba(237, 237, 237, 1);
   background-color: rgba(237, 237, 237, 1);
-  padding: 5px;
-  width: 30%;
+  padding: 3px;
+  width: 40%;
 }
 option{
   background-color: white;
@@ -102,21 +102,98 @@ option{
 .recherche{
   position: absolute;
   background-color: white;
-  width: 98%;
+  width: 90%;
 }
 
 .eventChercher{
   text-align: left;
-  border: solid black 3px;
-  margin: 40px 30px;
+  border: solid black 1px;
+  margin: 20px 15px;
   display: flex;
 }
 .aproposEvent{
-  margin-left: 20px;
-  font-size: 20px;
+  margin-left: 10px;
 }
 img{
-  width: 250px;
+  width: 100px;
+}
+@media only screen and (min-height: 500px) {
+  /* For tablets: */
+  .chercher{
+    height: 60vh;
+  }
+}
+@media only screen and (min-height: 800px) {
+  /* For tablets: */
+  .chercher{
+    height: 75vh;
+  }
+}
+@media only screen and (min-height: 1000px) {
+  /* For tablets: */
+  .chercher{
+    height: 79vh;
+  }
+}
+@media only screen and (min-width: 500px){
+  input, select, option, .aproposEvent{
+    font-size: 10px;
+  }
+  select{
+    width: 30%;
+  }
+  .inputChercher{
+    border-width: 0 0 3px 0;
+    width: 50%;
+    padding-top: 15px;
+  }
+  .recherche{
+    width: 95%;
+  }
+  img{
+    width: 150px;
+  }
+  .eventChercher{
+    border: solid black 2px;
+    margin: 20px 15px;
+  }
+}
+@media only screen and (min-width: 1000px){
+  input, select, option, .aproposEvent{
+    font-size: 15px;
+  }
+  select{
+    padding: 5px;
+  }
+  .inputChercher{
+    border-width: 0 0 4px 0;
+    width: 60%;
+  }
+  .recherche{
+    width: 98%;
+  }
+  .aproposEvent{
+    margin-left: 20px;
+  }
+  img{
+    width: 250px;
+  }
+  .eventChercher{
+    border: solid black 3px;
+    margin: 30px 20px;
+  }
+}
+@media only screen and (min-width: 1500px){
+  input, select, option, .aproposEvent{
+    font-size: 20px;
+  }
+  .inputChercher{
+    border-width: 0 0 5px 0;
+    padding-top: 20px;
+  }
+  .eventChercher{
+    margin: 40px 30px;
+  }
 }
 
 </style>

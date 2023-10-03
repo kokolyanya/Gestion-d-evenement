@@ -133,30 +133,45 @@ export default {
 <style scoped>
 .Form{  
   background-color: rgba(1, 103, 255, 0.21);
-  width: 40%;
+  width: 80%;
   margin:auto;
   margin-top: 10px;
-  min-height:70vh;
-  padding: 20px 30px;
+  min-height: 70vh;
+  padding: 10px 20px;
 }
 
+.titreNouvel{
+  font-size: 15px;
+}
 .acompleter{
   text-align: left;
-  font-size: 25px;
-  
+  font-size: 10px;
 }
 .acompleter div{
   margin: 10px 0;
 }
-.titreNouvel{
-  font-size: 30px;
+input, select{
+  background-color:transparent;
+  font-size: 8px;
+}
+#description{
+  display: block;
+  width: 100%;
+  background-color: rgba(237, 237, 237, 1);
+  border:none;
+  font-size: 8px;
+}
+.chercherLieu{
+  background-color: black;
+  color: white;
+  padding: 5px 0px;
+  border-radius: 50px;
+  font-size: 8px;
+  font-family: Kameron;
+  width: 30%;
 }
 label{
   margin-right: 10px;
-}
-input, select{
-  background-color:transparent;
-  font-size: 20px;
 }
 
 /***retirer les drop-down des select****/
@@ -183,9 +198,13 @@ select{
 .inputLieu{
   width: 60%;
 }
+.temps{
+  display: flex;
+  flex-direction: column;
+}
 .place{
   width: 75px;
-  height: 25px;
+  height: 10px;
 }
 
 /***retirer les fleches des input type number****/
@@ -206,22 +225,6 @@ input::-webkit-outer-spin-button {
 .horaire{
   margin-left: 50px;
 }
-.chercherLieu{
-  background-color: black;
-  color: white;
-  padding: 5px 0px;
-  border-radius: 50px;
-  font-size: 20px;
-  font-family: Kameron;
-  width: 30%;
-}
-#description{
-  display: block;
-  width: 100%;
-  background-color: rgba(237, 237, 237, 1);
-  border:none;
-  font-size: 20px;
-}
 .validation{
   display: flex;
   justify-content: flex-end;
@@ -229,9 +232,9 @@ input::-webkit-outer-spin-button {
 }
 .btn{
   border-radius: 50px;
-  padding: 10px 30px;
-  font-size: 20px;
-  margin: 0 20px;
+  padding: 5px;
+  font-size: 10px;
+  margin: 0 10px;
 }
 .annuler{
   background-color: transparent;
@@ -242,6 +245,95 @@ input::-webkit-outer-spin-button {
   background-color: rgba(1, 103, 255, 1);
   color: white;
   border-color: rgba(1, 103, 255, 1);
+}
+
+@media only screen and (min-width: 500px){
+  .Form{
+    width: 60%;
+    min-height: 70vh;
+    padding: 15px 25px;
+  }
+  .titreNouvel{
+    font-size: 20px;
+  }
+  .acompleter{
+    font-size: 15px;
+  }
+  input, select, #description, .chercherLieu, .btn{
+    font-size: 10px;
+  }
+  .btn{
+    padding: 5px 15px;
+    margin: 0 15px;
+  }
+  .inputNom, .inputTheme{
+    width: 70%;
+  }
+  .inputLieu{
+    width: 55%;
+  }
+  .place{
+    height: 15px;
+  }
+  
+}
+@media only screen and (min-width: 650px){
+  .temps{
+    flex-direction: row;
+  }
+}
+@media only screen and (min-width: 1000px){
+  .Form{
+    width: 50%;
+    min-height: 70vh;
+    padding: 20px 30px;
+  }
+  .titreNouvel{
+    font-size: 25px;
+  }
+  .acompleter{
+    font-size: 20px;
+  }
+  input, select, #description, .chercherLieu, .btn{
+    font-size: 15px;
+  }
+  .btn{
+    padding: 10px 30px;
+    margin: 0 20px;
+  }
+  .inputNom, .inputTheme{
+    width: 58%;
+  }
+  .inputLieu{
+    width: 55%;
+  }
+  .place{
+    height: 20px;
+  }
+}
+@media only screen and (min-width: 1500px){
+  .Form{
+    width: 40%;
+    min-height: 70vh;
+  }
+  .titreNouvel{
+    font-size: 30px;
+  }
+  .acompleter{
+    font-size: 25px;
+  }
+  input, select, #description, .chercherLieu, .btn{
+    font-size: 20px;
+  }
+  .inputNom, .inputTheme{
+    width: 65%;
+  }
+  .inputLieu{
+    width: 60%;
+  }
+  .place{
+    height: 25px;
+  }
 }
 
 </style>
