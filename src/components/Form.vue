@@ -250,7 +250,6 @@ input::-webkit-outer-spin-button {
 @media only screen and (min-width: 500px){
   .Form{
     width: 60%;
-    min-height: 70vh;
     padding: 15px 25px;
   }
   .titreNouvel{
@@ -285,7 +284,6 @@ input::-webkit-outer-spin-button {
 @media only screen and (min-width: 1000px){
   .Form{
     width: 50%;
-    min-height: 70vh;
     padding: 20px 30px;
   }
   .titreNouvel{
@@ -314,7 +312,6 @@ input::-webkit-outer-spin-button {
 @media only screen and (min-width: 1500px){
   .Form{
     width: 40%;
-    min-height: 70vh;
   }
   .titreNouvel{
     font-size: 30px;

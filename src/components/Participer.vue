@@ -38,7 +38,7 @@
           <div class="acompleter" >
             <div class="participant">
               <label for="nomParticipant">Nom du participant :</label>
-              <input id="nomParticipant" type="text" class="inputText inputNom" v-model.trim="nomParticipant" required/>
+              <input id="nomParticipant" type="text" class="inputText" v-model.trim="nomParticipant" required/>
             </div>
             <div>
               <label for="paiement">Paiement :</label>
@@ -125,12 +125,17 @@ export default {
 <style scoped>
 .Form{  
   background-color: rgba(1, 103, 255, 0.21);
-  width: 40%;
+  width: 80%;
   margin:auto;
   margin-top: 10px;
   min-height:70vh;
-  padding: 20px 30px;
-  font-size:20px;
+  padding: 10px 20px;
+}
+p, h3, label{
+  font-size: 10px;
+}
+input{
+  font-size: 8px;
 }
 .entete{
   display: flex;
@@ -138,14 +143,13 @@ export default {
 }
 .numero{
   background-color: rgba(237, 237, 237, 1);
-  padding: 5px 20px;
-}
-.surLeParticipant{
-  margin-top: 50px;
+  padding: 2px 10px;
 }
 .acompleter{
-  text-align: left;
-  
+  text-align: left;  
+}
+.surLeParticipant{
+  margin-top: 20px;
 }
 .temps{
   display: flex;
@@ -158,7 +162,7 @@ p{
   margin-bottom :0;
 }
 .heure{
-  margin-left: 50px;
+  margin-left: 15px;
 }
 h3{
   text-align: left;
@@ -169,19 +173,16 @@ label{
 input{
   background-color:transparent;
 }
-p, h3, label, input{
-  font-size: 20px;
-}
 .inputText{
   border-width: 0 0 1px 0;
-  width: 500px;
+  width: 50%;
 }
 .participant{
   margin-bottom: 5px;
 }
 .paiement{
   width: 50%;
-  height: 25px;
+  height: 10px;
 }
 .validation{
   display: flex;
@@ -190,9 +191,9 @@ p, h3, label, input{
 }
 .btn{
   border-radius: 50px;
-  padding: 10px 30px;
-  font-size: 20px;
-  margin: 0 20px;
+  padding: 5px 10px;
+  font-size: 8px;
+  margin: 0 10px;
 }
 .annuler{
   background-color: transparent;
@@ -203,6 +204,85 @@ p, h3, label, input{
   background-color: rgba(1, 103, 255, 1);
   color: white;
   border-color: rgba(1, 103, 255, 1);
+}
+
+@media only screen and (min-width: 500px){
+  .Form{
+    width: 60%;
+    padding: 15px 25px;
+  }
+  p, h3, label{
+    font-size: 15px;
+  }
+  input{
+    font-size: 10px;
+  }
+  .numero{
+    padding: 3px 15px;
+  }
+  .surLeParticipant{
+    margin-top: 30px;
+  }
+  .heure{
+    margin-left: 30px;
+  }
+  .paiement{
+    height: 15px;
+  }
+  .btn{
+    padding: 5px 15px;
+    font-size: 10px;
+  }
+}
+@media only screen and (min-width: 1000px){
+  .Form{
+    width: 50%;
+    padding: 20px 30px;
+  }
+  p, h3, label{
+    font-size: 20px;
+  }
+  input{
+    font-size: 15px;
+  }
+  .numero{
+    padding: 5px 20px;
+  }
+  .surLeParticipant{
+    margin-top: 40px;
+  }
+  .heure{
+    margin-left: 50px;
+  }
+  .paiement{
+    height: 20px;
+  }
+  .btn{
+    padding: 10px 30px;
+    font-size: 15px;
+    margin: 0 20px;
+  }
+}
+@media only screen and (min-width: 1500px){
+  .Form{
+    width: 40%;
+  }
+  p, h3, label{
+    font-size: 25px;
+  }
+  input{
+    font-size: 20px;
+  }
+  .surLeParticipant{
+    margin-top: 50px;
+  }
+  .paiement{
+    height: 25px;
+  }
+  .btn{
+    font-size: 20px;
+  }
+
 }
 
 </style>

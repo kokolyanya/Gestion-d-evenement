@@ -107,13 +107,13 @@ export default {
 <style scoped>
 .ticket{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
 .Form{  
   border: solid 2px black;
-  width: 30vw;
-  margin-top: 10px;
-  padding: 30px 70px;
+  width: 80%;
+  margin: 10px auto;
+  padding: 20px;
 }
 .entete{
   display: flex;
@@ -121,14 +121,13 @@ export default {
 }
 .numero{
   border: solid 1px black;
-  padding: 5px 20px;
+  padding: 2px 10px;
 }
 .surLeParticipant{
-  margin-top: 50px;
+  margin-top: 20px;
 }
-.acompleter{
+.acompleter, h3{
   text-align: left;
-  
 }
 .temps{
   display: flex;
@@ -141,42 +140,86 @@ p{
   margin-bottom :0;
 }
 .heure{
-  margin-left: 50px;
+  margin-left: 15px;
 }
-h3{
-  text-align: left;
-}
-label{
-  margin-right: 10px;
-}
-input{
-  background-color:transparent;
-}
-p, h3, label, input{
-  font-size: 20px;
-}
-.inputText{
-  border-width: 0 0 1px 0;
-  width: 500px;
-}
-.participant{
-  margin-bottom: 5px;
-}
-.paiement{
-  width: 50%;
-  height: 25px;
+p, h3{
+  font-size: 10px;
 }
 .imprimer{
   border-radius: 50px;
-  font-size: 20px;
   display: block;
-  width: 500px;
-  height: 50px;
-  padding: 10px 0;
-  margin: 20px 40px;
+  font-size: 10px;
+  width: 90vw;
+  padding: 5px 0;
   background-color: rgba(1, 103, 255, 1);
   color: white;
   border-color: rgba(1, 103, 255, 1);
+  margin: auto auto 10px auto;
+}
+
+@media only screen and (min-width: 500px){
+  .Form{
+    width: 60%;
+    padding: 20px 50px;
+  }
+  p, h3{
+    font-size: 15px;
+  }
+  .numero{
+    padding: 3px 15px;
+  }
+  .surLeParticipant{
+    margin-top: 30px;
+  }
+  .heure{
+    margin-left: 30px;
+  }
+  .imprimer{
+    font-size: 15px;
+    padding: 5px 0;
+    margin: auto auto 15px auto;
+  }
+}
+@media only screen and (min-width: 1000px){
+  .ticket{
+    flex-direction: row;
+  }
+  .Form{
+    width: 50%;
+    padding: 30px 70px;
+  }
+  p, h3{
+    font-size: 20px;
+  }
+  .numero{
+    padding: 5px 20px;
+  }
+  .surLeParticipant{
+    margin-top: 40px;
+  }
+  .heure{
+    margin-left: 50px;
+  }
+  .imprimer{
+    margin: 10px 10px 0 0;
+    height: 50px;
+    font-size: 20px;
+    width: 33vw;
+  }
+}
+@media only screen and (min-width: 1500px){
+  .Form{
+    width: 40%;
+  }
+  p, h3{
+    font-size: 25px;
+  }
+  .surLeParticipant{
+    margin-top: 50px;
+  }
+  .imprimer{
+    font-size: 25px;
+  }
 }
 
 </style>
