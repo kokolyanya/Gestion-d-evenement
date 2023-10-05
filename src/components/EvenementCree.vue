@@ -1,5 +1,5 @@
 <template>
-  <div class="EvenementCree">
+  <Page>
     <div class="det">
       <img :src="require('@/assets/'+e.fileName)" :alt="e.nomEvenement" :title="e.nomEvenement" />
       <div class="aproposEvent">
@@ -15,10 +15,12 @@
         <button class="btn modifier" @click="modifier">Modifier</button>
       </div>
     </div>
-  </div>
+  </Page>
 </template>
 
 <script>
+import Page from '@/components/Page.vue';
+
 export default {
   name: 'EvenementCree',
   props: {
@@ -49,20 +51,16 @@ export default {
     modifier() {
       this.$router.go(-1);
     }
+  },
+  components: {
+    Page,
   }
+
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.EvenementCree{
-  background-color: white;
-  height: 50vh;
-  border-radius: 0 0 50px 50px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-.EvenementCree::-webkit-scrollbar { width: 0 !important } 
 .det{
   text-align: left;
   margin: 10px;
@@ -95,24 +93,6 @@ img{
   border-color: rgba(1, 103, 255, 1);
 }
 
-@media only screen and (min-height: 500px) {
-  /* For tablets: */
-  .EvenementCree{
-    height: 60vh;
-  }
-}
-@media only screen and (min-height: 800px) {
-  /* For tablets: */
-  .EvenementCree{
-    height: 75vh;
-  }
-}
-@media only screen and (min-height: 1000px) {
-  /* For tablets: */
-  .EvenementCree{
-    height: 79vh;
-  }
-}
 @media only screen and (min-width: 500px){
   .det{
     margin: 20px;

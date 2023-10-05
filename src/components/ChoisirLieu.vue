@@ -60,24 +60,23 @@ export default {
 
 .lieuChercher{
   text-align: left;
-  border: solid black 3px;
-  margin: 20px 30px;
-  padding-left: 20px;
-  font-size: 20px;
-  width: 90%;
+  border: solid black 1px;
+  margin: 5px 10px;
+  padding-left: 10px;
+  font-size: 10px;
+  width: 95%;
 }
 
 .validation{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 20px;
 }
 .btn{
   border-radius: 50px;
-  padding: 10px 30px;
-  font-size: 20px;
-  margin: 0 30px 20px 0;
+  padding: 5px;
+  font-size: 8px;
+  margin: 0 10px 5px 0;
 }
 .voir{
   background-color: transparent;
@@ -92,6 +91,60 @@ export default {
 .annuler{
   text-align: left;
   margin:10px 0 0 30px;
+  font-size: 10px;
+}
+
+@media only screen and (min-width: 500px){
+  .lieuChercher{
+    text-align: left;
+    border: solid black 2px;
+    margin: 10px 15px;
+    padding-left: 10px;
+    font-size: 15px;
+  }
+  .btn{
+    padding: 5px 15px;
+    margin: 5px 15px 10px 0;
+    font-size: 10px;
+  }
+  .annuler{
+    font-size: 15px;
+  }
+}
+@media only screen and (min-width: 1000px){
+  .lieuChercher{
+    text-align: left;
+    border: solid black 3px;
+    margin: 15px 20px;
+    padding-left: 20px;
+    font-size: 20px;
+  }
+  .btn{
+    padding: 10px 30px;
+    margin: 5px 20px 15px 0;
+    font-size: 15px;
+  }
+  .annuler{
+    font-size: 20px;
+  }
+}
+@media only screen and (min-width: 1500px){
+  .lieuChercher{
+    text-align: left;
+    border: solid black 3px;
+    margin: 20px 30px;
+    padding-left: 20px;
+    font-size: 25px;
+    width: 90%;
+  }
+  .btn{
+    padding: 10px 35px;
+    margin: 5px 25px 20px 0;
+    font-size: 20px;
+  }
+  .annuler{
+    font-size: 25px;
+  }
 }
 
 </style>

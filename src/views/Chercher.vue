@@ -1,5 +1,5 @@
 <template>
-  <div class="chercher">
+  <Page>
     <div class="recherche">
       <span class="material-icons">search</span> 
       <input type="text" class="inputChercher" v-on:input="handleChange"/>
@@ -29,11 +29,12 @@
         <p>Date : {{e.date}}</p>
       </div>
     </div>
-  </div>
+  </Page>
 </template>
 
 <script>
 // @ is an alias to /src
+import Page from '@/components/Page.vue';
 import Entete from '@/components/Entete.vue';
 
 export default {
@@ -68,19 +69,14 @@ export default {
       const propValue = e.id;
       this.$router.push({ path: "/details", query: { value: propValue } });
     }
+  },
+  components: {
+    Page,
   }
 }
 </script>
 
-<style scoped>
-.chercher{
-  background-color: white;
-  height: 50vh;
-  border-radius: 0 0 50px 50px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-.chercher::-webkit-scrollbar { width: 0 !important }  
+<style scoped> 
 
 input, select, option, .aproposEvent{
   font-size: 8px;
@@ -117,24 +113,7 @@ option{
 img{
   width: 100px;
 }
-@media only screen and (min-height: 500px) {
-  /* For tablets: */
-  .chercher{
-    height: 60vh;
-  }
-}
-@media only screen and (min-height: 800px) {
-  /* For tablets: */
-  .chercher{
-    height: 75vh;
-  }
-}
-@media only screen and (min-height: 1000px) {
-  /* For tablets: */
-  .chercher{
-    height: 79vh;
-  }
-}
+
 @media only screen and (min-width: 500px){
   input, select, option, .aproposEvent{
     font-size: 10px;

@@ -43,24 +43,24 @@ export default {
 .unLieu{
   
 }
-
 .lieu{
-  border: solid black 3px;
-  margin: 40px 30px;
-  width: 95%;
+  border: solid black 2px;
+  margin: auto;
+  margin-top: 15px;
+  width: 90%;
   min-height: 60vh;
 }
-
 .validation{
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
+  margin-right: 10px;
 }
 .btn{
   border-radius: 50px;
-  padding: 10px 30px;
-  font-size: 20px;
-  margin: 0 30px 20px 0;
+  padding: 5px;
+  font-size: 10px;
+  margin: 0 10px;
 }
 .annuler{
   background-color: transparent;
@@ -71,6 +71,44 @@ export default {
   background-color: rgba(1, 103, 255, 1);
   color: white;
   border-color: rgba(1, 103, 255, 1);
+}
+
+@media only screen and (min-width: 500px){
+  .lieu{
+    border: solid black 2px;
+    width: 95%;
+  }
+  .btn{
+    font-size: 10px;
+    padding: 5px 15px;
+    margin: 0 15px;
+  }
+    
+}
+@media only screen and (min-width: 1000px){
+  .lieu{
+    border: solid black 3px;
+    margin-top: 20px;
+  }
+  .btn{
+    font-size: 15px;
+    padding: 10px 30px;
+    margin: 0 20px;
+  }
+  .validation{
+    margin-right: 20px;
+  }
+}
+@media only screen and (min-width: 1500px){
+  .lieu{
+    margin-top: 25px;
+  }
+  .btn{
+    font-size: 20px;
+  }
+  .validation{
+    margin-right: 25px;
+  }
 }
 
 </style>

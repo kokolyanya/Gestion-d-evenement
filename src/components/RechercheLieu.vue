@@ -114,21 +114,24 @@ export default {
 <style scoped>
 .Form{  
   background-color: rgba(1, 103, 255, 0.21);
-  width: 40%;
+  width: 80%;
   margin:auto;
   margin-top: 10px;
-  min-height:70vh;
-  padding: 20px 30px;
-  font-size:20px;
+  min-height: 70vh;
+  padding: 10px 20px;
 }
 .acompleter{
   text-align: left;
+  font-size: 10px;
 }
 .acompleter div{
-  margin: 20px 0;
+  margin: 10px 0;
+}
+.titreNouvel{
+  font-size: 15px;
 }
 label{
-  margin-right: 10px;
+  margin-right: 5px;
 }
 input{
   background-color:transparent;
@@ -144,8 +147,8 @@ input::-webkit-outer-spin-button {
 	-webkit-appearance: none;
 	margin:0;
 }
-p, h3, label, input{
-  font-size: 20px;
+label, input, .btn{
+  font-size: 8px;
 }
 .inputText{
   border-width: 0 0 1px 0;
@@ -156,6 +159,9 @@ p, h3, label, input{
 }
 .nombre{
   width: 75px;
+}
+.numero, .nombre{
+  height: 10px;
 }
 .nom{
   display: flex;
@@ -168,9 +174,9 @@ p, h3, label, input{
 }
 .btn{
   border-radius: 50px;
-  padding: 10px 30px;
-  font-size: 20px;
-  margin: 0 20px;
+  padding: 5px;
+  font-size: 10px;
+  margin: 0 10px;
 }
 .annuler{
   background-color: transparent;
@@ -183,4 +189,72 @@ p, h3, label, input{
   border-color: rgba(1, 103, 255, 1);
 }
 
+@media only screen and (min-width: 500px){
+  .Form{
+    width: 60%;
+    padding: 15px 25px;
+  }
+  .titreNouvel{
+    font-size: 20px;
+  }
+  .acompleter, input, label{
+    font-size: 15px;
+  }
+  .btn{
+    font-size: 10px;
+    padding: 5px 15px;
+    margin: 0 15px;
+  }
+  .inputText{
+    width: 70%;
+  }
+  .numero, .nombre{
+    height: 15px;
+  }
+    
+}
+@media only screen and (min-width: 1000px){
+  .Form{
+    width: 50%;
+    padding: 20px 30px;
+  }
+  .titreNouvel{
+    font-size: 25px;
+  }
+  .acompleter, input, label{
+    font-size: 20px;
+  }
+  .btn{
+    font-size: 15px;
+    padding: 10px 30px;
+    margin: 0 20px;
+  }
+  label{
+    margin-right: 10px;
+  }
+  .numero, .nombre{
+    height: 20px;
+  }
+}
+@media only screen and (min-width: 1500px){
+  .Form{
+    width: 40%;
+  }
+  .titreNouvel{
+    font-size: 30px;
+  }
+  .acompleter, input, label{
+    font-size: 25px;
+  }
+  .btn{
+    font-size: 20px;
+  }
+  .inputText{
+    width: 68%;
+  }
+  .numero, .nombre{
+    height: 25px;
+  }
+
+}
 </style>
