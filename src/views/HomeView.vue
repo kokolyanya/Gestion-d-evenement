@@ -4,12 +4,6 @@
       <div v-for="e in evenement" :key="e"  @click="detailler(e)">
         <img :src="require('@/assets/' +e.fileName)" :alt="e.description" :title="e.nomEvenement"/>
       </div>
-      <div v-for="e in evenement" :key="e"  @click="detailler(e)">
-        <img :src="require('@/assets/' +e.fileName)" :alt="e.description" :title="e.nomEvenement"/>
-      </div>
-      <div v-for="e in evenement" :key="e"  @click="detailler(e)">
-        <img :src="require('@/assets/' +e.fileName)" :alt="e.description" :title="e.nomEvenement"/>
-      </div>
     </div>
   </Page>
 </template>

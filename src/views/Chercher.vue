@@ -20,15 +20,6 @@
         <p>Date : {{e.date}}</p>
       </div>
     </div>
-    <div class="eventChercher" v-for="e in eventFiltre" @click="detailler(e)">
-      <img :src="require('@/assets/' +e.fileName)" alt="e.nomEvenement" title="e.nomEvenement" />
-      <div class="aproposEvent">
-        <p>{{e.nomEvenement}}</p>
-        <p>Thème : {{e.themeEvenement}}</p>
-        <p>Lieu : {{e.lieu}}</p>
-        <p>Date : {{e.date}}</p>
-      </div>
-    </div>
   </Page>
 </template>
 
