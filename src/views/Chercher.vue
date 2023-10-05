@@ -40,7 +40,7 @@ import Entete from '@/components/Entete.vue';
 export default {
   name: 'Chercher',
   components: {
-    Entete
+    Page, Entete
   },
   data() {
     return {
@@ -77,7 +77,6 @@ export default {
 </script>
 
 <style scoped> 
-
 input, select, option, .aproposEvent{
   font-size: 8px;
 }

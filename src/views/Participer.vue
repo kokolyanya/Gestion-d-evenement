@@ -1,6 +1,7 @@
 <template>
   <Page>
-    <form class="Form" @submit.prevent="submitForm">
+    <Form>
+      <form @submit.prevent="submitForm">
         <div class="entete">
           <p class="numero">001</p>
           <p>Date : {{aujourdhui}} </p>
@@ -51,16 +52,20 @@
           <button class="btn annuler" @click="annuler">Annuler</button>
           <input type="submit" class="btn valider" value="Valider" />
         </div>
-
-    </form>
+      </form>
+    </Form>
   </Page>
 </template>
 
 <script>
 import Page from '@/components/Page.vue';
+import Form from '@/components/Form.vue';
 
 export default {
   name: 'Participer',
+  components: {
+    Page, Form
+  },
   props: {
     verification: {
       type: Object,
@@ -114,23 +119,12 @@ export default {
       /*$router.go(-1)*/
     }
     
-  },
-  components: {
-    Page,
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.Form{  
-  background-color: rgba(1, 103, 255, 0.21);
-  width: 80%;
-  margin:auto;
-  margin-top: 10px;
-  min-height:70vh;
-  padding: 10px 20px;
-}
 p, h3, label{
   font-size: 10px;
 }
@@ -207,10 +201,6 @@ input{
 }
 
 @media only screen and (min-width: 500px){
-  .Form{
-    width: 60%;
-    padding: 15px 25px;
-  }
   p, h3, label{
     font-size: 15px;
   }
@@ -235,10 +225,6 @@ input{
   }
 }
 @media only screen and (min-width: 1000px){
-  .Form{
-    width: 50%;
-    padding: 20px 30px;
-  }
   p, h3, label{
     font-size: 20px;
   }
@@ -264,9 +250,6 @@ input{
   }
 }
 @media only screen and (min-width: 1500px){
-  .Form{
-    width: 40%;
-  }
   p, h3, label{
     font-size: 25px;
   }

@@ -21,6 +21,9 @@ import Page from '@/components/Page.vue';
 
 export default {
   name: 'ChoisirLieu',
+  components: {
+    Page,
+  },
   props: {
     verification: {
       type: Array,
@@ -45,9 +48,6 @@ export default {
       this.$router.push({ path: "/creer" });
     },
     
-  },
-  components: {
-    Page,
   }
 }
 </script>

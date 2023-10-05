@@ -50,7 +50,7 @@ export default {
 @media only screen and (min-height: 1000px) {
   /* For tablets: */
   .page{
-    height: 80vh;
+    height: 79vh;
   }
 }
 

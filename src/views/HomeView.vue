@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <Page>
     <div class="evenements">
       <div v-for="e in evenement" :key="e"  @click="detailler(e)">
         <img :src="require('@/assets/' +e.fileName)" :alt="e.description" :title="e.nomEvenement"/>
@@ -11,21 +11,21 @@
         <img :src="require('@/assets/' +e.fileName)" :alt="e.description" :title="e.nomEvenement"/>
       </div>
     </div>
-  </div>
+  </Page>
 </template>
 
 <script>
 // @ is an alias to /src
-import Details from '@/components/Details.vue';
+import Page from '@/components/Page.vue';
+import Details from '@/views/Details.vue';
 
 export default {
   name: 'HomeView',
   components: {
-    Details
+    Page, Details
   },
   data() {
-    return {
-      
+    return {      
     }
   },
   computed: {
@@ -44,15 +44,6 @@ export default {
 </script>
 
 <style scoped>
-.home{
-  background-color: white;
-  height: 50vh;
-  border-radius: 0 0 50px 50px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-.home::-webkit-scrollbar { width: 0 !important } 
-
 .evenements{
   margin-top: 10px;
   display: grid;
@@ -63,24 +54,6 @@ export default {
 img{
   width: 200px;
   height : 200px;
-}
-@media only screen and (min-height: 500px) {
-  /* For tablets: */
-  .home{
-    height: 60vh;
-  }
-}
-@media only screen and (min-height: 800px) {
-  /* For tablets: */
-  .home{
-    height: 75vh;
-  }
-}
-@media only screen and (min-height: 1000px) {
-  /* For tablets: */
-  .home{
-    height: 79vh;
-  }
 }
 @media only screen and (min-width: 300px) {
   img{

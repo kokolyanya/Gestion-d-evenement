@@ -57,6 +57,9 @@ import html2pdf from 'html2pdf.js';
 
 export default {
   name: 'Ticket',
+  components: {
+    Page,
+  },
   props: {
     verification: {
       type: Object,
@@ -96,9 +99,6 @@ export default {
       html2pdf().from(element).set(opt).save();
     }
     
-  },
-  components: {
-    Page,
   }
 }
 </script>

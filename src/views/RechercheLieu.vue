@@ -1,6 +1,7 @@
 <template>
   <Page>
-    <form class="Form" @submit.prevent="submitForm">
+    <Form>
+      <form @submit.prevent="submitForm">
         <h2 class="titreNouvel">Description du lieu</h2>
         <div class="acompleter">
           <div class="nom">
@@ -43,16 +44,20 @@
           <button class="btn annuler" @click="$router.go(-1)">Annuler</button>
           <input type="submit" class="btn valider" value="Chercher" />
         </div>
-
-    </form>
+      </form>
+    </Form>
   </Page>
 </template>
 
 <script>
 import Page from '@/components/Page.vue';
+import Form from '@/components/Form.vue';
 
 export default {
   name: 'RechercheLieu',
+  components: {
+    Page, Form
+  },
   data() {
     return {
       pays:'',
@@ -103,23 +108,12 @@ export default {
 
     }
     
-  },
-  components: {
-    Page,
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.Form{  
-  background-color: rgba(1, 103, 255, 0.21);
-  width: 80%;
-  margin:auto;
-  margin-top: 10px;
-  min-height: 70vh;
-  padding: 10px 20px;
-}
 .acompleter{
   text-align: left;
   font-size: 10px;
@@ -190,10 +184,6 @@ label, input, .btn{
 }
 
 @media only screen and (min-width: 500px){
-  .Form{
-    width: 60%;
-    padding: 15px 25px;
-  }
   .titreNouvel{
     font-size: 20px;
   }
@@ -214,10 +204,6 @@ label, input, .btn{
     
 }
 @media only screen and (min-width: 1000px){
-  .Form{
-    width: 50%;
-    padding: 20px 30px;
-  }
   .titreNouvel{
     font-size: 25px;
   }
@@ -237,9 +223,6 @@ label, input, .btn{
   }
 }
 @media only screen and (min-width: 1500px){
-  .Form{
-    width: 40%;
-  }
   .titreNouvel{
     font-size: 30px;
   }

@@ -17,23 +17,21 @@ import Page from '@/components/Page.vue';
 
 export default {
   name: 'VoirLieu',
+  components: {
+    Page,
+  },
   props: {
     id: Number,
   },
   data() {
     return {
-      lieux : this.$store.state.lieux,
-      
+      lieux : this.$store.state.lieux,      
     }
   },
   methods: {
     submitForm() {
       this.$router.push({ path: "/creer", query: {idLieu : this.id} });
-    },
-    
-  },
-  components: {
-    Page,
+    }    
   }
 }
 </script>

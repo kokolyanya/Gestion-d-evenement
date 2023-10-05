@@ -1,28 +1,24 @@
 <template>
-  <Page>
-    <div class="det">
-      <img :src="require('@/assets/'+e.fileName)" :alt="e.nomEvenement" :title="e.nomEvenement" />
-      <div class="aproposEvent">
-        <p>Nom de l'évènement : {{ e.nomEvenement }}</p>
-        <p>Nom de l'organisateur : {{ e.nomOrganisateur }}</p>
-        <p>Thème : {{ e.themeEvenement }}</p>
-        <p>Description : {{ e.description }}</p>
-        <p>Date : {{e.date}}</p>
-        <p>Heure : {{e.horaireDebut}} à {{e.horaireFin}}</p>
-        <p>Lieu : {{e.lieu}}</p>
-        <p>Nombre de place : {{e.nombrePlace}}</p>
-        <p>Participation : {{e.participation}}</p>
-        <button class="btn modifier" @click="modifier">Modifier</button>
-      </div>
+  <div class="det">
+    <img :src="require('@/assets/'+e.fileName)" :alt="e.nomEvenement" :title="e.nomEvenement" />
+    <div class="aproposEvent">
+      <p>Nom de l'évènement : {{ e.nomEvenement }}</p>
+      <p>Nom de l'organisateur : {{ e.nomOrganisateur }}</p>
+      <p>Thème : {{ e.themeEvenement }}</p>
+      <p>Description : {{ e.description }}</p>
+      <p>Date : {{e.date}}</p>
+      <p>Heure : {{e.horaireDebut}} à {{e.horaireFin}}</p>
+      <p>Lieu : {{e.lieu}}</p>
+      <p>Nombre de place : {{e.nombrePlace}}</p>
+      <p class="participation">Participation : {{e.participation}}</p>
+      <slot></slot>
     </div>
-  </Page>
+  </div>
 </template>
 
 <script>
-import Page from '@/components/Page.vue';
-
 export default {
-  name: 'EvenementCree',
+  name: 'Evenement',
   props: {
     verification: {
       type: Object,
@@ -48,12 +44,7 @@ export default {
     }
   },
   methods: {
-    modifier() {
-      this.$router.go(-1);
-    }
-  },
-  components: {
-    Page,
+    
   }
 
 }
@@ -78,6 +69,9 @@ img{
 .aproposEvent p{
   margin-top: 5px;
 }
+.participation{
+  margin-bottom: 30px;
+}
 .btn{
   border-radius: 50px;
   font-size: 10px;
@@ -85,12 +79,6 @@ img{
   width: 90vw;
   padding: 5px 0;
   margin: 10px 0;
-}
-.modifier{
-  margin-top: 30px;
-  background-color: rgba(1, 103, 255, 1);
-  color: white;
-  border-color: rgba(1, 103, 255, 1);
 }
 
 @media only screen and (min-width: 500px){
@@ -112,8 +100,8 @@ img{
     padding: 5px 0;
     margin: 10px 0;
   }
-  .modifier{
-    margin-top: 30px;
+  .participation{
+    margin-bottom: 30px;
   }
 }
 @media only screen and (min-width: 1000px){
@@ -130,9 +118,9 @@ img{
     width: 33vw;
     padding: 8px 0;
     margin: 15px 5px 15px 0;
-  }
-  .modifier{
-    margin-top: 30px;
+  }  
+  .participation{
+    margin-bottom: 50px;
   }
 }
 @media only screen and (min-width: 1500px){
@@ -145,8 +133,8 @@ img{
     padding: 10px 0;
     margin: 20px 0;
   }
-  .modifier{
-    margin-top: 100px;
+  .participation{
+    margin-bottom: 50px;
   }
 }
 </style>
