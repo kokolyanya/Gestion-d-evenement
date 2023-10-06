@@ -207,19 +207,5 @@ p, h3{
     width: 33vw;
   }
 }
-@media only screen and (min-width: 1500px){
-  .Form{
-    width: 40%;
-  }
-  p, h3{
-    font-size: 25px;
-  }
-  .surLeParticipant{
-    margin-top: 50px;
-  }
-  .imprimer{
-    font-size: 25px;
-  }
-}
 
 </style>
